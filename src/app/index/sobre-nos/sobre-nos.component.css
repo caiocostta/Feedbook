@@ -1,0 +1,14 @@
+*{
+    color: #fff;
+}
+.container-fluid{
+    width: 60%;
+    min-height: 83vh;
+}
+.container-fluid p{
+    margin: 0;
+    padding-bottom: 25px;
+}
+.container-fluid h1{
+    padding-top: 25px;
+}

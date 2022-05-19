@@ -1,0 +1,87 @@
+.container{
+    min-height: 83vh;
+}
+.container h1{
+    margin: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #fff;
+    font-size: 25px;
+    text-align: center;
+}
+
+/*
+    Input de pesquisa
+*/
+.container-fluid{
+    width: 60% !important;
+}
+.container-fluid form{
+    padding-bottom: 15px;
+}
+.form-control{
+    height: 35px;
+}
+.btn-outline-light{
+    height: 35px;
+}
+
+/*
+    Catálogo de Livros
+*/
+.bg-red{
+    background-color: #810000 !important;
+}
+.livro-info{
+    margin: 50px 15px;
+    padding: 15px 5px;
+    width: 20%;
+    box-shadow: 0px 0px 10px #aaa;
+    transition-duration: 300ms;
+    transform-origin: 0% 0%;
+}
+.livro-info:hover{
+    animation-name: widthDiv;
+    animation-duration: 300ms;
+    width: 30%;
+}
+#livroTeste:hover{
+    animation-name: widthDiv;
+    animation-duration: 300ms;
+    width: 30%;
+}
+.livro-info a img{
+    width: 50%;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.livro-info--title{
+    height: 75px;
+    margin: -15px -5px;
+    margin-top: 15px;
+    padding: 10px 5px;
+}
+.livro-info--title h2{
+    color: #222 !important;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+}
+.pagination .btn{
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+@keyframes widthDiv{
+    from{width: 20%;}
+    to {width: 30%;}
+}
+
+@media (max-width: 770px){
+    .livro-info{
+        width: 50%;
+    }
+    .container-fluid{
+        width: 80% !important;
+    }
+}

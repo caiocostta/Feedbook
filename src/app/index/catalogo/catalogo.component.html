@@ -1,0 +1,31 @@
+<div class="container">
+
+    <!-- Barra de Pesquisa -->
+
+    <h1>Pesquise pelos seus livros favoritos ou encontre novos em nosso catálogo</h1>
+    <div class="container-fluid">
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" [value]="bookName" #inputName placeholder="Títulos, gêneros e autores" aria-label="Search">
+          <button class="btn btn-outline-light" (click)="handleConsultar(inputName.value)">Pesquisar</button>
+        </form>
+    </div>
+
+      <!-- Catálogo de livros -->
+
+      <div class="d-flex justify-content-center container flex-wrap"> 
+        <div class="d-flex text-center flex-column justify-content-between livro-info bg-dark rounded" [routerLink]="['livro', result.id]" *ngFor="let result of res" (click)="abrirTela(result.id)" >
+            <a><img src="{{ result.volumeInfo.imageLinks != null ? result.volumeInfo.imageLinks.smallThumbnail : 'https://i.ibb.co/bFQf7sd/livro-default-foto.jpg' }}" class="img-fluid"/></a>
+            <div class="livro-info--title d-flex align-items-start justify-content-center bg-light rounded-bottom">
+              <h2>{{ result.volumeInfo.title }}</h2>
+            </div>
+        </div>
+      </div>
+
+      <!-- Botão Ver Mais -->
+
+      <div class="container-fluid pagination d-flex justify-content-center" *ngIf="bookName != ''">
+        <button type="button" #testeButton (click)="showMore()" class="btn btn-outline-light">Ver Mais</button>
+      </div>
+
+
+</div>

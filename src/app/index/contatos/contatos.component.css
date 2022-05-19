@@ -1,0 +1,48 @@
+*{
+    color: #fff;
+}
+.container{
+    min-height: 83vh;
+}
+.container h1{
+    margin-bottom: 50px;
+}
+section .container-fluid{
+    width: 50% !important;
+}
+.flex-grow-1{
+    padding: 30px;
+}
+.contatos-info{
+    padding: 30px;
+}
+.bg-red{
+    background-color: #610000;
+}
+#nomeCompleto{
+    border: none;
+    border-bottom: 1px solid #bbb;
+    color: #fff;
+}
+#nomeCompleto::placeholder{
+    text-align: center;
+    font-size: 20px;
+    color: #bbb;
+}
+#contatoMsg{
+    border: none;
+    border-bottom: 1px solid #bbb;
+    color: #fff;
+    resize: none;
+}
+#contatoMsg::placeholder{
+    font-size: 20px;
+    color: #bbb;
+}
+
+@media (max-width: 990px){
+    section .container-fluid{
+        width: 100% !important;
+        border: none !important;
+    }
+}

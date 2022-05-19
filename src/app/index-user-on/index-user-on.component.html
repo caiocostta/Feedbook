@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-red">
+    <div class="container align-items-center">
+        <h1 class="navbar-brand" routerLink="home">FeedBook</h1>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" routerLink="home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" routerLink="sobre">Sobre Nós</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" routerLink="contato">Contato</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <button type="button" class="btn btn-outline-light bg-dark-red d-flex align-items-center" routerLink="">
+                <div class="user-logo rounded-circle bg-light"></div>
+                <p>Usuário</p>
+                <i class="bi bi-door-open"></i>
+            </button>
+          </form>
+        </div>
+    </div>
+</nav>
+<div class="bg-dark-red">
+  <!--<router-outlet></router-outlet>-->
+  <livro-info-user></livro-info-user>
+</div>
+<footer>
+    <div class="bg-dark">
+        <a class="nav-link active" routerLink="home">Home</a>
+        <a class="nav-link" routerLink="sobre">Sobre Nós</a>
+        <a class="nav-link" routerLink="contato">Contato</a>
+    </div>
+    <div class="bg-red text-center">
+        <a href=""><i class="bi bi-facebook"></i></a>
+        <a href=""><i class="bi bi-instagram"></i></a>
+        <a href=""><i class="bi bi-linkedin"></i></a>
+    </div>
+</footer>

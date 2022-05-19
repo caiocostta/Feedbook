@@ -1,0 +1,52 @@
+/*
+    CABEÇALHO E RODAPÉ
+*/
+*{
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+}
+.bg-dark-red{
+    background-color: #630000;
+}
+.bg-red{
+    background-color: #810000 !important;
+    text-transform: uppercase !important;
+}
+.bg-dark{
+    color: #FFF !important;
+    display: flex;
+    justify-content: center;
+}
+.bg-red a,
+.bg-red h1,
+.bg-dark a{
+    color: #FFF !important;
+    cursor: pointer;
+}
+.bg-red a:hover,
+.bg-red .active{
+    color: #EEEBDD !important;
+    border-bottom: 3px solid #EEEBDD;
+}
+.btn-light{
+    color: #810000 !important;
+    margin-right: 10px;
+}
+.btn-outline-light:hover{
+    color: #810000 !important;
+}
+.bi{
+    margin: 0px 5px;
+    font-size: 25px;
+}
+.text-center a:hover{
+    color: #FFF !important;
+    border: 0 !important;
+}
+
+/*
+    BACKGROUND DO CATÁLOGO
+*/
+.bg-dark-red{
+    background-color: #630000;
+}
