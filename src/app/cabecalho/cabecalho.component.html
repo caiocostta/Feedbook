@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-red">
+    <div class="container align-items-center">
+        <h1 class="navbar-brand" routerLink="">FeedBook</h1>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" routerLink="livros">Livros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" routerLink="sobre">Sobre Nós</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" routerLink="contato">Contato</a>
+            </li>
+          </ul>
+          <form class="d-flex" *ngIf="!userOnOff">
+            <button type="button" class="btn btn-light" routerLink="/userInfo/login">Entrar</button>
+            <button type="button" class="btn btn-outline-light" routerLink="/userInfo/cadastro">Cadastre-se</button>
+          </form>
+          <form class="d-flex" *ngIf="userOnOff">
+            <button type="button" class="btn btn-outline-light bg-dark-red d-flex align-items-center">
+                <div class="user-logo rounded-circle bg-light" routerLink="userInfo"></div>
+                <p routerLink="userInfo">{{ nomeUsuario }}</p>
+                <i class="bi bi-door-open" (click)="userLogoff()"></i>
+            </button>
+          </form>
+        </div>
+    </div>
+</nav>

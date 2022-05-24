@@ -1,23 +1,29 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { IndexComponent } from './index/index.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IndexUserOnComponent } from './index-user-on/index-user-on.component';
-import { LivroInfoUserComponent } from './index-user-on/livro-info-user/livro-info-user.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { CatalogoComponent } from './index/catalogo/catalogo.component';
+import { HomeComponent } from './home/home.component';
+import { CabecalhoComponent } from './cabecalho/cabecalho.component';
+import { SobreNosComponent } from './sobre-nos/sobre-nos.component';
+import { ContatoComponent } from './contato/contato.component';
+import { RodapeComponent } from './rodape/rodape.component'
+import { UsersService } from './user-info/users.service';
+import { AuthService } from './user-info/login/auth.service';
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    IndexComponent,
-    IndexUserOnComponent,
-    LivroInfoUserComponent,
-    CatalogoComponent
+    HomeComponent,
+    CabecalhoComponent,
+    SobreNosComponent,
+    ContatoComponent,
+    RodapeComponent,
+    PaginaNaoEncontradaComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +32,10 @@ import { CatalogoComponent } from './index/catalogo/catalogo.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    UsersService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,10 @@
+<div class="container d-flex flex-column text-center justify-content-center">
+    <h1>Bem Vindo de Volta!</h1>
+    <div class="form">
+        <div class="mb-3 container-fluid">
+            <input [(ngModel)]="usuario.nome" type="text" class="form-control bg-red" placeholder="Nome de Usuário" required><br/>
+            <input [(ngModel)]="usuario.senha" type="password" class="form-control bg-red" placeholder="Senha" required>
+        </div>
+        <button class="btn btn-outline-light" type="submit" (click)="fazerLogin()">Entrar</button>
+    </div>
+</div>

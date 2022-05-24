@@ -1,0 +1,29 @@
+.container{
+    min-height: 83vh;
+}
+h1{
+    margin-bottom: 30px;
+}
+.bg-red{
+    background-color: #610000;
+}
+.mb-3 input{
+    border: none;
+    border-bottom: 1px solid #bbb;
+    color: #fff;
+    text-align: center;
+}
+.mb-3 input::placeholder{
+    font-size: 20px;
+    color: #bbb;
+}
+form .container-fluid{
+    width: 50%;
+}
+.has-error{
+    background-color: #fff;
+    color: red !important;
+}
+.has-error::placeholder{
+    color: red !important;
+}

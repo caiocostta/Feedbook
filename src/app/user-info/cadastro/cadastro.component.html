@@ -1,0 +1,14 @@
+<div class="container d-flex flex-column text-center justify-content-center">
+    <h1>Faça seu cadastro gratuito!</h1>
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+        <div class="mb-3 container-fluid">
+            <input formControlName="nome" type="text" class="form-control bg-red" placeholder="Nome Completo" [ngClass]="aplcaCssErro('nome')"><br/>
+            <input formControlName="usuario" type="text" class="form-control bg-red" placeholder="Nome de Usuário" [ngClass]="aplcaCssErro('usuario')"><br/>
+            <input formControlName="email" type="email" class="form-control bg-red" placeholder="E-mail" [ngClass]="aplcaCssErro('email')"><br/>
+            <input formControlName="tel" type="tel" class="form-control bg-red" placeholder="Telefone" [ngClass]="aplcaCssErro('tel')"><br/>
+            <input formControlName="senha" type="password" class="form-control bg-red" placeholder="Senha" [ngClass]="aplcaCssErro('senha')"><br/>
+            <input formControlName="confSenha" type="password" class="form-control bg-red" placeholder="Confirmar Senha" [ngClass]="aplcaCssErro('confSenha')">
+        </div>
+        <button class="btn btn-outline-light">Enviar</button>
+    </form>
+</div>

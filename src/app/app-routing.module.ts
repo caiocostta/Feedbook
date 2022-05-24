@@ -1,25 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CadastroComponent } from './index/cadastro/cadastro.component';
-import { CatalogoComponent } from './index/catalogo/catalogo.component';
-import { ContatosComponent } from './index/contatos/contatos.component';
-import { IndexComponent } from './index/index.component';
-import { LivroInfoComponent } from './index/livro-info/livro-info.component';
-import { LoginComponent } from './index/login/login.component';
-import { SobreNosComponent } from './index/sobre-nos/sobre-nos.component';
+
+import { ContatoComponent } from './contato/contato.component';
+import { HomeComponent } from './home/home.component';
+import { LivrosComponent } from './livros/livros.component';
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
+import { SobreNosComponent } from './sobre-nos/sobre-nos.component';
+
 
 const routes: Routes = [
-  {path: '', component: IndexComponent, children: [
-    {path: '', component: CatalogoComponent},
-    {path: 'home', component: CatalogoComponent},
-    {path: 'livro/:id', component: LivroInfoComponent},
-    {path: 'home/livro/:id', component: LivroInfoComponent},
-    {path: 'sobre', component: SobreNosComponent},
-    {path: 'contato', component: ContatosComponent},
-    {path: 'login', component: LoginComponent},
-    {path: 'cadastro', component: CadastroComponent},
-  ]},
-  
+  {path: 'livros', loadChildren:()=> import('./livros/livro.module').then(mod => mod.LivroModule)},
+  {path: 'userInfo', loadChildren:()=> import('./user-info/user.module').then(mod => mod.UserModule)},
+  {path: 'sobre', component: SobreNosComponent},
+  {path: 'contato', component: ContatoComponent},
+  {path: '', component: LivrosComponent},
+  {path: '**', component: PaginaNaoEncontradaComponent}
 ];
 
 @NgModule({

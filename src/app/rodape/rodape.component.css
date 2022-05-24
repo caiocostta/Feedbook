@@ -1,0 +1,29 @@
+/*
+    CABEÇALHO E RODAPÉ
+*/
+.bg-red{
+    background-color: #810000 !important;
+    text-transform: uppercase !important;
+}
+.bg-dark{
+    color: #FFF !important;
+    display: flex;
+    justify-content: center;
+}
+.bg-red a,
+.bg-dark a{
+    color: #FFF !important;
+    cursor: pointer;
+}
+.bg-red a:hover{
+    color: #EEEBDD !important;
+    border-bottom: 3px solid #EEEBDD;
+}
+.bi{
+    margin: 0px 5px;
+    font-size: 25px;
+}
+.text-center a:hover{
+    color: #FFF !important;
+    border: 0 !important;
+}

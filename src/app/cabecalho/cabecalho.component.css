@@ -1,0 +1,36 @@
+.bg-dark-red{
+    background-color: #630000;
+}
+.bg-red{
+    background-color: #810000 !important;
+    text-transform: uppercase !important;
+}
+.bg-red a,
+.bg-red h1{
+    color: #FFF !important;
+    cursor: pointer;
+}
+.bg-red a:hover,
+.bg-red .active{
+    color: #EEEBDD !important;
+    border-bottom: 3px solid #EEEBDD;
+}
+.btn-light{
+    color: #810000 !important;
+    margin-right: 10px;
+}
+.btn-outline-light:hover{
+    color: #fff !important;
+}
+.btn-outline-light p{
+    margin: 0 5px;
+}
+.bi{
+    margin: 0px 5px;
+    font-size: 25px;
+}
+
+.user-logo{
+    width: 40px;
+    height: 40px;
+}

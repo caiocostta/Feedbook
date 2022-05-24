@@ -1,0 +1,19 @@
+.container{
+    min-height: 83vh;
+}
+.image-area{
+    width: 300px !important;
+    height: 300px;
+    margin-right: 25px;
+    padding-left: 20px;
+}
+.image-area img{
+    width: 100%;
+    height: 100%;
+}
+.btn{
+    margin: 10px;
+}
+.btn-light{
+    color: #610000;
+}
