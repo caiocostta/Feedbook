@@ -3,10 +3,10 @@
         <img src="https://i.ibb.co/bFQf7sd/livro-default-foto.jpg">
     </div>
     <div class="livro-info--desc d-flex flex-column flex-grow-1">
-        <h1>Nome: {{ nomeUsuario }} </h1>
-        <h1>Usuário:  </h1>
-        <h1>E-mail:  </h1>
-        <h1>Telefone:  </h1>
+        <h1>Nome: {{ user.nome }} </h1>
+        <h1>Usuário:  {{ user.usuario }}</h1>
+        <h1>E-mail:  {{ user.email }}</h1>
+        <h1>Telefone:  {{ user.tel }}</h1>
         <div class="d-flex justify-content-center">
             <a class="btn btn-outline-light" routerLink="edit">Editar Informações</a>
             <a class="btn btn-light" routerLink="feedbacks">Feedbacks</a>

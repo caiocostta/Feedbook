@@ -8,7 +8,7 @@ export class ConsultaApiService {
 
   constructor(private httpClient: HttpClient){
   }
-  
+
   private readonly API = 'https://www.googleapis.com/books/v1/volumes/';
 
   calloutServiceOnly(bookId: string){

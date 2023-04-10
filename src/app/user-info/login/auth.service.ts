@@ -20,20 +20,24 @@ export class AuthService {
 
   fazerLogin(user: Usuario){
     let usuario = this.userService.getUser(user.nome);
-    if(usuario != null && usuario != undefined){
-      this.userAutenticated = true;
-      this.mostrarMenuEmitter.emit(true);
-      this.username = usuario.usuario;
-      this.mostrarUsuario.emit(this.username);
-      this.usuarioInfo = usuario;
-      this.mostrarUsuarioInfo.emit(this.usuarioInfo);
+    if(usuario != undefined){
       if(user.nome === usuario.usuario && user.senha === usuario.senha){
         this.router.navigate(['/livros']);
+        this.userAutenticated = true;
+        this.mostrarMenuEmitter.emit(true);
+        this.username = usuario.usuario;
+        this.mostrarUsuario.emit(this.username);
+        this.usuarioInfo = usuario;
+        this.mostrarUsuarioInfo.emit(this.usuarioInfo);
+      }else{
+          this.userAutenticated = false;
+          this.mostrarMenuEmitter.emit(false);
+          alert('USUARIO NÃO REGISTRADO')
       }
     }else{
-        this.userAutenticated = false;
-        this.mostrarMenuEmitter.emit(false);
-        alert('USUARIO NÃO REGISTRADO')
+      this.userAutenticated = false;
+      this.mostrarMenuEmitter.emit(false);
+      alert('USUARIO NÃO REGISTRADO')
     }
   }
   fazerLogoff(){

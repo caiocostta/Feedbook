@@ -7,7 +7,7 @@
             <h1><b>Título:</b> {{ livro.title }} </h1>
             <h1><b>Autores:</b> {{ livro.author }} </h1>
             <h1><b>Gênero:</b> {{ livro.categories }} </h1>
-            <h1 id="description"><b>Resumo:</b> {{ livro.description }} </h1>
+            <h1 id="description"><b>Resumo:</b> <p [innerHTML]="livro.description"></p> </h1>
             <div class="show-more d-flex justify-content-center"><a class="btn btn-outline-light">Mostrar Mais</a></div>
         </div>
     </div>
@@ -21,36 +21,36 @@
                     <div class="feedback-info card-header bg-light d-flex justify-content-between align-items-center">
                       <div class="user-info d-flex align-items-center">
                         <div class="user-logo rounded-circle bg-dark"></div>
-                        <p>Nome de usuário</p> 
+                        <p>Nome de usuário</p>
                       </div>
-                      <p>13/05/2022</p> 
+                      <p>13/05/2022</p>
                     </div>
                     <div class="card-body bg-dark">
-                      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque orci, ullamcorper ut venenatis quis, dictum vel nisl. Duis accumsan mi vel neque mollis tempor. Aenean in nisl interdum, laoreet nisl sit amet, tristique risus. Curabitur aliquam, tellus sit amet suscipit egestas, lectus nisl tempor tellus, commodo egestas lorem sapien eget leo.</p>
+                      <p class="card-text">{{ comment }}</p>
                     </div>
                 </div>
                 <div class="feedback card shadow-lg">
                     <div class="feedback-info card-header bg-light d-flex justify-content-between align-items-center">
                       <div class="user-info d-flex align-items-center">
                         <div class="user-logo rounded-circle bg-dark"></div>
-                        <p>Nome de usuário</p> 
+                        <p>Nome de usuário</p>
                       </div>
-                      <p>13/05/2022</p> 
+                      <p>13/05/2022</p>
                     </div>
                     <div class="card-body bg-dark">
-                      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque orci, ullamcorper ut venenatis quis, dictum vel nisl. Duis accumsan mi vel neque mollis tempor. Aenean in nisl interdum, laoreet nisl sit amet, tristique risus. Curabitur aliquam, tellus sit amet suscipit egestas, lectus nisl tempor tellus, commodo egestas lorem sapien eget leo.</p>
+                      <p class="card-text">{{ comment }}</p>
                     </div>
                 </div>
                 <div class="feedback card shadow-lg">
                     <div class="feedback-info card-header bg-light d-flex justify-content-between align-items-center">
                       <div class="user-info d-flex align-items-center">
                         <div class="user-logo rounded-circle bg-dark"></div>
-                        <p>Nome de usuário</p> 
+                        <p>Nome de usuário</p>
                       </div>
-                      <p>13/05/2022</p> 
+                      <p>13/05/2022</p>
                     </div>
                     <div class="card-body bg-dark">
-                      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque orci, ullamcorper ut venenatis quis, dictum vel nisl. Duis accumsan mi vel neque mollis tempor. Aenean in nisl interdum, laoreet nisl sit amet, tristique risus. Curabitur aliquam, tellus sit amet suscipit egestas, lectus nisl tempor tellus, commodo egestas lorem sapien eget leo.</p>
+                      <p class="card-text">{{ comment }}</p>
                     </div>
                 </div>
             </div>

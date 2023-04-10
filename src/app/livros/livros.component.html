@@ -12,7 +12,7 @@
 
       <!-- Catálogo de livros -->
 
-      <div class="d-flex justify-content-center container flex-wrap"> 
+      <div class="d-flex justify-content-center container flex-wrap">
         <div class="d-flex text-center flex-column livro-info bg-dark justify-content-between rounded" *ngFor="let liv of livros">
             <a [routerLink]="['/livros', liv.id]"><img src="{{ liv.volumeInfo.imageLinks != null ? liv.volumeInfo.imageLinks.smallThumbnail : 'https://i.ibb.co/bFQf7sd/livro-default-foto.jpg' }}" class="img-fluid"/></a>
             <div class="livro-info--title d-flex align-items-start justify-content-center bg-light rounded-bottom">

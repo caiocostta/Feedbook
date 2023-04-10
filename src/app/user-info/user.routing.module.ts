@@ -11,7 +11,7 @@ import { CadastroComponent } from './cadastro/cadastro.component'
 const usersRoutes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'cadastro', component: CadastroComponent},
-    {path: '', component: UserInfoComponent, children: [
+    {path: ':nomeUsuario', component: UserInfoComponent, children: [
         {path: '/edit', component: UserEditComponent},
         {path: '/feedbacks', component: UserFeedbacksComponent}
     ]}
