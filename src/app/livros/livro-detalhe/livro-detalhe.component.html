@@ -7,8 +7,9 @@
             <h1><b>Título:</b> {{ livro.title }} </h1>
             <h1><b>Autores:</b> {{ livro.author }} </h1>
             <h1><b>Gênero:</b> {{ livro.categories }} </h1>
-            <h1 id="description"><b>Resumo:</b> <p [innerHTML]="livro.description"></p> </h1>
-            <div class="show-more d-flex justify-content-center"><a class="btn btn-outline-light">Mostrar Mais</a></div>
+            <h1 id="description"><b>Resumo:</b> <p [innerHTML]="livro.description | slice:0:limiteCaracter"></p> </h1>
+            <div *ngIf="limitado" class="show-more d-flex justify-content-center"><a (click)="mostrarMais()" class="btn btn-outline-light">Mostrar Mais</a></div>
+            <div *ngIf="!limitado" class="show-more d-flex justify-content-center"><a (click)="mostrarMais()" class="btn btn-outline-light">Mostrar Menos</a></div>
         </div>
     </div>
     <div class="feedbacks-livro container-fluid">
@@ -16,41 +17,19 @@
             <div class="card-header bg-red">
               Feedbacks de leitores
             </div>
-            <div class="card-body bg-dark-red">
-                <div class="feedback card shadow-lg">
-                    <div class="feedback-info card-header bg-light d-flex justify-content-between align-items-center">
-                      <div class="user-info d-flex align-items-center">
-                        <div class="user-logo rounded-circle bg-dark"></div>
-                        <p>Nome de usuário</p>
+            <div class="card-body bg-dark-red" *ngFor="let comment of comments">
+                <div class="feedback card shadow-lg" *ngFor="let c of comment.feedbacks">
+                    <div *ngIf="c.livroId == id">
+                      <div class="feedback-info card-header bg-light d-flex justify-content-between align-items-center">
+                        <div class="user-info d-flex align-items-center">
+                          <div class="user-logo rounded-circle bg-dark"></div>
+                          <p>{{ comment.nome }}</p>
+                        </div>
+                        <p>{{ c.data }}</p>
                       </div>
-                      <p>13/05/2022</p>
-                    </div>
-                    <div class="card-body bg-dark">
-                      <p class="card-text">{{ comment }}</p>
-                    </div>
-                </div>
-                <div class="feedback card shadow-lg">
-                    <div class="feedback-info card-header bg-light d-flex justify-content-between align-items-center">
-                      <div class="user-info d-flex align-items-center">
-                        <div class="user-logo rounded-circle bg-dark"></div>
-                        <p>Nome de usuário</p>
+                      <div class="card-body bg-dark">
+                        <p class="card-text">{{ c.descricao }}</p>
                       </div>
-                      <p>13/05/2022</p>
-                    </div>
-                    <div class="card-body bg-dark">
-                      <p class="card-text">{{ comment }}</p>
-                    </div>
-                </div>
-                <div class="feedback card shadow-lg">
-                    <div class="feedback-info card-header bg-light d-flex justify-content-between align-items-center">
-                      <div class="user-info d-flex align-items-center">
-                        <div class="user-logo rounded-circle bg-dark"></div>
-                        <p>Nome de usuário</p>
-                      </div>
-                      <p>13/05/2022</p>
-                    </div>
-                    <div class="card-body bg-dark">
-                      <p class="card-text">{{ comment }}</p>
                     </div>
                 </div>
             </div>

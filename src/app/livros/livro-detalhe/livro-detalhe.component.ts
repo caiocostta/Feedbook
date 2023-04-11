@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { ConsultaApiService } from '../consulta-api.service';
+import { UsersService } from 'src/app/user-info/users.service';
+
 
 
 @Component({
@@ -15,39 +17,41 @@ export class LivroDetalheComponent implements OnInit {
   id: any;
   inscricao: Subscription = new Subscription;
   livro: any;
-  imageLinks: any;
-  img: any;
-  title: any;
-  author: any;
-  categories: any;
-  description: any;
+  limiteCaracter: number = 350;
+  limitado: boolean = true
 
 
-  constructor(private route: ActivatedRoute, private router: Router ,  private consultaApi: ConsultaApiService) {
+  constructor(private route: ActivatedRoute, private router: Router ,  private consultaApi: ConsultaApiService, private userService: UsersService) {
     this.route.params.subscribe(
       (params: any) => {
         this.id = params['id'];
         this.consultaApi.calloutServiceOnly(this.id).subscribe(
-          (valor: any) => this.getLivro(valor.volumeInfo), (e) => {
+          (valor: any) => {
+            this.getLivro(valor.volumeInfo)
+          }, (e) => {
             router.navigate(['/livros/naoEncontrado'])
           })
-
       }
     );
 
   }
 
-  comment: string = `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Sed neque orci, ullamcorper ut venenatis quis, dictum vel
-                      nisl. Duis accumsan mi vel neque mollis tempor. Aenean in nisl
-                      interdum, laoreet nisl sit amet, tristique risus. Curabitur aliquam, tellus sit amet
-                      suscipit egestas, lectus nisl tempor tellus, commodo egestas lorem sapien eget leo.`;
+  comments: any
 
-  ngOnInit(){}
+  ngOnInit(){
+    this.comments = this.userService.users
+  }
 
   getLivro(valor: any){
     this.livro = valor;
-
+  }
+  mostrarMais(){
+    if(this.limiteCaracter == 350){
+      this.limiteCaracter = this.livro.description.lenght
+    }else{
+      this.limiteCaracter = 350
+    }
+    this.limitado = !this.limitado
   }
 
   ngOnDestroy(){

@@ -1,7 +1,8 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { Router, Route } from '@angular/router';
+
 import { AuthService } from '../user-info/login/auth.service';
-import { UsersService } from '../user-info/users.service';
+import { Usuario } from '../user-info/login/usuario';
 
 
 @Component({
@@ -11,14 +12,26 @@ import { UsersService } from '../user-info/users.service';
 })
 export class CabecalhoComponent implements OnInit {
 
-  nomeUsuario: string = '';
-  userOnOff: boolean = false;
+  nomeUsuario: Usuario | any = '';
+  userOnOff: boolean | string | null = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) { 
+    this.userOnOff = localStorage.getItem('mostrarMenu')
+    this.nomeUsuario = localStorage.getItem('usuario')
+    this.nomeUsuario = JSON.parse(this.nomeUsuario)?.usuario
+  }
 
   ngOnInit(): void {
-    this.authService.mostrarMenuEmitter.subscribe(m => { this.userOnOff = m});
-    this.authService.mostrarUsuario.subscribe(u => {this.nomeUsuario = u});
+    this.authService.mostrarMenuEmitter.subscribe(v => {
+      this.userOnOff = v
+    })
+    this.authService.mostrarUsuario.subscribe(u => {
+      this.nomeUsuario = JSON.parse(this.authService.userDb).usuario
+    });
+  }
+
+  ngDoCheck(): void{
+    
   }
 
   userLogoff(){

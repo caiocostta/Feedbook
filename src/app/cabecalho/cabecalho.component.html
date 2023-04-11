@@ -18,7 +18,7 @@
             <button type="button" class="btn btn-outline-light" routerLink="/userInfo/cadastro">Cadastre-se</button>
           </form>
           <form class="d-flex" *ngIf="userOnOff">
-            <button type="button" class="btn btn-outline-light bg-dark-red d-flex align-items-center">
+            <button [routerLink]="['/userInfo', nomeUsuario]" type="button" class="btn btn-outline-light bg-dark-red d-flex align-items-center" >
                 <div class="user-logo rounded-circle bg-light" [routerLink]="['/userInfo', nomeUsuario]"></div>
                 <p [routerLink]="['/userInfo', nomeUsuario]">{{ nomeUsuario }}</p>
                 <i class="bi bi-door-open" (click)="userLogoff()"></i>

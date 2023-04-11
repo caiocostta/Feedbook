@@ -15,7 +15,7 @@ export class LivrosComponent implements OnInit {
   bookName: any;
   dados: any;
 
-  constructor(private livrosService: LivrosService) { }
+  constructor(private livrosService: LivrosService) {}
 
   handleConsult(name: any){
     this.bookName = name;
