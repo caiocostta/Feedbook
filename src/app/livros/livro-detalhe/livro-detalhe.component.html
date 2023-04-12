@@ -17,21 +17,40 @@
             <div class="card-header bg-red">
               Feedbacks de leitores
             </div>
-            <div class="card-body bg-dark-red" *ngFor="let comment of comments">
-                <div class="feedback card shadow-lg" *ngFor="let c of comment.feedbacks">
-                    <div *ngIf="c.livroId == id">
-                      <div class="feedback-info card-header bg-light d-flex justify-content-between align-items-center">
-                        <div class="user-info d-flex align-items-center">
-                          <div class="user-logo rounded-circle bg-dark"> <img class="user-logo rounded-circle" src="../../../assets/{{ comment.foto }}" alt=""> </div>
-                          <p>{{ comment.nome }}</p>
+            <div class="card-body bg-dark-red">
+              <div class="feedback card shadow-lg">
+                <div>
+                  <div class="feedback-info card-header bg-light d-flex justify-content-between align-items-center">
+                    <div class="user-info d-flex align-items-center">
+                      <div class="user-logo rounded-circle bg-dark"> <img class="user-logo rounded-circle" src="../../../assets/{{ comments }}" alt=""> </div>
+                      <p>{{ comments }}</p>
+                    </div>
+                  </div>
+                  <div class="card-body bg-dark">
+                    <textarea name="" id="" cols="100%" rows="10"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngFor="let comment of comments">
+              <div *ngFor="let c of comment.feedbacks">
+                <div class="card-body bg-dark-red" *ngIf="c.livroId == id">
+                    <div class="feedback card shadow-lg">
+                        <div>
+                          <div class="feedback-info card-header bg-light d-flex justify-content-between align-items-center">
+                            <div class="user-info d-flex align-items-center">
+                              <div class="user-logo rounded-circle bg-dark"> <img class="user-logo rounded-circle" src="../../../assets/{{ comment.foto }}" alt=""> </div>
+                              <p>{{ comment.nome }}</p>
+                            </div>
+                            <p>{{ c.data }}</p>
+                          </div>
+                          <div class="card-body bg-dark">
+                            <p class="card-text">{{ c.descricao }}</p>
+                          </div>
                         </div>
-                        <p>{{ c.data }}</p>
-                      </div>
-                      <div class="card-body bg-dark">
-                        <p class="card-text">{{ c.descricao }}</p>
-                      </div>
                     </div>
                 </div>
+              </div>
             </div>
         </div>
     </div>

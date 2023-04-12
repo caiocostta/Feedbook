@@ -12,10 +12,6 @@ import { UsersService } from '../user-info/users.service';
   styleUrls: ['./cabecalho.component.css']
 })
 export class CabecalhoComponent implements OnInit {
-
-
-
-
   nomeUsuario: Usuario | any = '';
 
   userOnOff: boolean | string | null = false;
@@ -35,6 +31,7 @@ export class CabecalhoComponent implements OnInit {
     })
     this.authService.mostrarUsuario.subscribe(u => {
       this.nomeUsuario = JSON.parse(this.authService.userDb).usuario
+      this.userInfo = this.userService.getUser(this.nomeUsuario)
     });
   }
 
