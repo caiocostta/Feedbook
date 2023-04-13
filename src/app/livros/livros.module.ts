@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule  } from '@angular/common';
 
 import { LivrosComponent } from '../livros.component';
 import { LivroDetalheComponent } from '../livro-detalhe/livro-detalhe.component';

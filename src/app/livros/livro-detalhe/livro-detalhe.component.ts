@@ -36,10 +36,15 @@ export class LivroDetalheComponent implements OnInit {
 
   }
 
+  users: any
   comments: any
+  user: any
 
   ngOnInit(){
-    this.comments = this.userService.users
+    this.users = this.userService.users
+    this.comments = this.userService.feedbacks
+    this.user = localStorage.getItem('usuario')
+    this.user = JSON.parse(this.user)
   }
 
   getLivro(valor: any){
