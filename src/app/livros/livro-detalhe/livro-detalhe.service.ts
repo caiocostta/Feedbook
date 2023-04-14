@@ -7,6 +7,8 @@ import { UsersService } from 'src/app/user-info/users.service';
 export class LivroDetalheService {
 
   indexComments: any = 0
+  curtido: boolean = false
+  naoGostei: boolean = false
 
   ngOnInit(){
     this.salvarComment()
@@ -16,14 +18,27 @@ export class LivroDetalheService {
     this.salvarComment()
    }
 
-   salvarComment(){
-    this.indexComments = localStorage.getItem('indexComments')
-    this.indexComments = Number(this.indexComments)
-    for(let i = 1; i <= this.indexComments; i++){
-      let comments: any = localStorage.getItem(`comments${i}`)
-      comments = JSON.parse(comments)
-      this.userService.feedbacks.push(comments)
-      console.log(this.userService.feedbacks)
+   handleGostei(id: number, parametro: string){
+    if(parametro == 'gostei'){
+      if(!this.curtido){
+        this.curtido = true
+        this.userService.getFeedback(id)!.curtidas++
+      }else{
+        this.curtido = false
+        this.userService.getFeedback(id)!.curtidas--
+      }
+    }else if(parametro == 'naoGostei'){
+      if(!this.naoGostei){
+        if(this.curtido){
+          this.curtido = false
+          this.userService.getFeedback(id)!.curtidas--
+        }
+        this.naoGostei = true
+        this.userService.getFeedback(id)!.naoGostei++
+      }else{
+        this.naoGostei = false
+        this.userService.getFeedback(id)!.naoGostei--
+      }
     }
    }
 
@@ -70,11 +85,21 @@ export class LivroDetalheService {
   enviarFeedback(user: any, estrelas: boolean[], comment: string, dataAtual: string, livroId: string){
     this.indexComments++
     localStorage.setItem('indexComments', this.indexComments.toString())
-    let obj = JSON.stringify({data: dataAtual, descricao: comment, livroId: livroId, userId: user.usuario, estrelas: estrelas})
+    let obj = JSON.stringify({id: this.userService.feedbacks.length + 1, data: dataAtual, descricao: comment, livroId: livroId, userId: user.usuario, estrelas: estrelas})
     localStorage.setItem(`comments${this.indexComments}`, obj.toString())
     let dbComment: any = localStorage.getItem(`comments${this.indexComments}`)
     estrelas = JSON.parse(dbComment).estrelas
-    this.userService.feedbacks.push({data: dataAtual, descricao: comment, livroId: livroId, userId: user.usuario, curtidas: 0, naoGostei: 0, estrelas: estrelas})
+    this.userService.feedbacks.push({id: this.userService.feedbacks.length + 1, data: dataAtual, descricao: comment, livroId: livroId, userId: user.usuario, curtidas: 0, naoGostei: 0, estrelas: estrelas})
+  }
+
+  salvarComment(){
+    this.indexComments = localStorage.getItem('indexComments')
+    this.indexComments = Number(this.indexComments)
+    for(let i = 1; i <= this.indexComments; i++){
+      let comments: any = localStorage.getItem(`comments${i}`)
+      comments = JSON.parse(comments)
+      this.userService.feedbacks.push(comments)
+    }
   }
 
 }

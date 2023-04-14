@@ -26,10 +26,10 @@
                       <p>{{ user.nome }}</p>
                     </div>
                   </div>
-                  <div class="card-body bg-dark">
+                  <div class="card-body bg-dark novo-comentario">
                     <textarea [(ngModel)]="newFeedback" name="comentarioInfo" class="bg-dark comentario-info" rows="5"></textarea>
                     <div class="d-flex justify-content-between align-items-center">
-                      <div>
+                      <div class="d-flex align-items-center">
                         <b>Avaliação: </b>
                         <i (click)="mostrarEstrela(0)" *ngIf="!estrelaDisplay[0]" class="bi m-1 bi-star"></i>
                         <i (click)="esconderEstrela(0)" *ngIf="estrelaDisplay[0]" class="bi m-1 bi-star-fill"></i>
@@ -62,15 +62,23 @@
                               <div class="user-logo rounded-circle bg-dark"> <img class="user-logo rounded-circle" src="../../../assets/{{ user.foto }}" alt=""> </div>
                               <p>{{ user.nome }}</p>
                             </div>
-                            <p>{{ comment.data | date: 'dd/MM/yyyy' }}</p>
+                            <p>{{ comment.data | date: 'dd/MM/yyyy HH:mm' }}</p>
                           </div>
                           <div class="card-body bg-dark">
                             <p class="card-text">{{ comment.descricao }}</p>
-                            <div class="d-flex">
+                            <div class="d-flex align-items-center">
                               <b style="margin-right: 5px;" >Avaliação: </b>
                               <div *ngFor="let estrela of comment.estrelas">
                                 <i *ngIf="estrela == false" class="bi m-1 bi-star"></i>
                                 <i *ngIf="estrela == true" class="bi m-1 bi-star-fill"></i>
+                              </div>
+                              <div class="d-flex m-2 align-items-center">
+                                <p style="margin-left: 15px !important;" class="m-1">{{ comment.curtidas }}</p>
+                                <i *ngIf="!curtido" (click)="handleGostei(comment.id, 'gostei')" class="bi bi-hand-thumbs-up fs-5 m-1"></i>
+                                <i *ngIf="curtido" (click)="handleGostei(comment.id, 'gostei')" class="bi bi-hand-thumbs-up-fill fs-5 m-1"></i>
+                                <p style="margin-left: 15px !important;" class="m-1">{{ comment.naoGostei }}</p>
+                                <i *ngIf="!naoGostei" (click)="handleGostei(comment.id, 'naoGostei')" class="bi bi-hand-thumbs-down fs-5 m-1"></i>
+                                <i *ngIf="naoGostei" (click)="handleGostei(comment.id, 'naoGostei')" class="bi bi-hand-thumbs-down-fill fs-5 m-1"></i>
                               </div>
                             </div>
                           </div>

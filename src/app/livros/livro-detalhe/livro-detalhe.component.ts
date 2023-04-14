@@ -44,7 +44,6 @@ export class LivroDetalheComponent implements OnInit {
   ngOnInit(){
     this.users = this.userService.users
     this.comments = this.userService.feedbacks
-    console.log(this.comments)
     this.user = localStorage.getItem('usuario')
     this.user = JSON.parse(this.user)
   }
@@ -65,6 +64,20 @@ export class LivroDetalheComponent implements OnInit {
 
   esconderEstrela(indice: number){
     this.estrelaDisplay = this.livroService.esconderEstrela(indice)
+  }
+
+  curtido: boolean = false
+  naoGostei: boolean = false
+
+  handleGostei(id: number, parametro: string){
+    this.livroService.handleGostei(id, parametro)
+    if(parametro == 'gostei'){
+      this.curtido = !this.curtido
+      this.naoGostei = false
+    }else if(parametro == 'naoGostei'){
+      this.naoGostei = !this.naoGostei
+      this.curtido = false
+    }
   }
 
   getLivro(valor: any){

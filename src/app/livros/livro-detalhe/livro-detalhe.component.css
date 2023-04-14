@@ -54,6 +54,9 @@
   color: white;
   width: 100%;
 }
+.bi-hand-thumbs-up, .novo-comentario .bi-star, .novo-comentario .bi-star-fill, .bi-hand-thumbs-up-fill, .bi-hand-thumbs-down, .bi-hand-thumbs-down-fill{
+    cursor: pointer;
+}
 .user-logo{
     width: 40px;
     height: 40px;

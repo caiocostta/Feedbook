@@ -1,5 +1,7 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule  } from '@angular/common';
+import { registerLocaleData } from '@angular/common';
+import ptBr from '@angular/common/locales/pt';
 
 import { LivrosComponent } from '../livros.component';
 import { LivroDetalheComponent } from '../livro-detalhe/livro-detalhe.component';
@@ -26,7 +28,12 @@ import { LivrosService } from '../livros/livros.service';
     FormsModule
   ],
   providers:[
-    LivrosService
+    LivrosService,
+    {provide: LOCALE_ID, useValue: 'pt-BR'}
   ]
 })
-export class LivroModule { }
+export class LivroModule { 
+  constructor() {
+    registerLocaleData(ptBr);
+  }
+}
