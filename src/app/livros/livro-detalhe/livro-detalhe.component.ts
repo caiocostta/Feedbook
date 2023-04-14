@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { ConsultaApiService } from '../consulta-api.service';
 import { UsersService } from 'src/app/user-info/users.service';
+import { LivroDetalheService } from './livro-detalhe.service';
 
 
 
@@ -17,11 +18,11 @@ export class LivroDetalheComponent implements OnInit {
   id: any;
   inscricao: Subscription = new Subscription;
   livro: any;
-  limiteCaracter: number = 350;
-  limitado: boolean = true
+  limiteCaracter: any = 350;
+  limitado: any = true
 
 
-  constructor(private route: ActivatedRoute, private router: Router ,  private consultaApi: ConsultaApiService, private userService: UsersService) {
+  constructor(private route: ActivatedRoute, private router: Router ,  private consultaApi: ConsultaApiService, private userService: UsersService, private livroService: LivroDetalheService) {
     this.route.params.subscribe(
       (params: any) => {
         this.id = params['id'];
@@ -43,20 +44,36 @@ export class LivroDetalheComponent implements OnInit {
   ngOnInit(){
     this.users = this.userService.users
     this.comments = this.userService.feedbacks
+    console.log(this.comments)
     this.user = localStorage.getItem('usuario')
     this.user = JSON.parse(this.user)
+  }
+
+  estrelaDisplay: boolean[]= [false, false, false, false, false]
+
+  newFeedback: string = ''
+
+  enviarFeedback(){
+    let dataAtual: any = new Date()
+
+    this.livroService.enviarFeedback(this.user, this.estrelaDisplay, this.newFeedback, dataAtual.toString(), this.id)
+  }
+
+  mostrarEstrela(indice: number){
+    this.estrelaDisplay = this.livroService.mostrarEstrela(indice)
+  }
+
+  esconderEstrela(indice: number){
+    this.estrelaDisplay = this.livroService.esconderEstrela(indice)
   }
 
   getLivro(valor: any){
     this.livro = valor;
   }
+
   mostrarMais(){
-    if(this.limiteCaracter == 350){
-      this.limiteCaracter = this.livro.description.lenght
-    }else{
-      this.limiteCaracter = 350
-    }
-    this.limitado = !this.limitado
+    this.limiteCaracter = this.livroService.mostrarMais(this.limiteCaracter, this.livro, this.limitado)[0]
+    this.limitado = this.livroService.mostrarMais(this.limiteCaracter, this.livro, this.limitado)[1]
   }
 
   ngOnDestroy(){

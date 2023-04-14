@@ -27,7 +27,27 @@
                     </div>
                   </div>
                   <div class="card-body bg-dark">
-                    <textarea name="" id="" cols="100%" rows="10"></textarea>
+                    <textarea [(ngModel)]="newFeedback" name="comentarioInfo" class="bg-dark comentario-info" rows="5"></textarea>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div>
+                        <b>Avaliação: </b>
+                        <i (click)="mostrarEstrela(0)" *ngIf="!estrelaDisplay[0]" class="bi m-1 bi-star"></i>
+                        <i (click)="esconderEstrela(0)" *ngIf="estrelaDisplay[0]" class="bi m-1 bi-star-fill"></i>
+
+                        <i (click)="mostrarEstrela(1)" *ngIf="!estrelaDisplay[1]" class="bi m-1 bi-star"></i>
+                        <i (click)="esconderEstrela(1)" *ngIf="estrelaDisplay[1]" class="bi m-1 bi-star-fill"></i>
+
+                        <i (click)="mostrarEstrela(2)" *ngIf="!estrelaDisplay[2]" class="bi m-1 bi-star"></i>
+                        <i (click)="esconderEstrela(2)" *ngIf="estrelaDisplay[2]" class="bi m-1 bi-star-fill"></i>
+
+                        <i (click)="mostrarEstrela(3)" *ngIf="!estrelaDisplay[3]" class="bi m-1 bi-star"></i>
+                        <i (click)="esconderEstrela(3)" *ngIf="estrelaDisplay[3]" class="bi m-1 bi-star-fill"></i>
+
+                        <i (click)="mostrarEstrela(4)" *ngIf="!estrelaDisplay[4]" class="bi m-1 bi-star"></i>
+                        <i (click)="esconderEstrela(4)" *ngIf="estrelaDisplay[4]" class="bi m-1 bi-star-fill"></i>
+                      </div>
+                      <button (click)="enviarFeedback()" class="btn btn-dark"> <i class="bi bi-send-fill m-auto"></i> </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -42,19 +62,17 @@
                               <div class="user-logo rounded-circle bg-dark"> <img class="user-logo rounded-circle" src="../../../assets/{{ user.foto }}" alt=""> </div>
                               <p>{{ user.nome }}</p>
                             </div>
-                            <p>{{ comment.data }}</p>
+                            <p>{{ comment.data | date: 'dd/MM/yyyy' }}</p>
                           </div>
                           <div class="card-body bg-dark">
                             <p class="card-text">{{ comment.descricao }}</p>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
-                            <i class="bi bi-star"></i>
+                            <div class="d-flex">
+                              <b style="margin-right: 5px;" >Avaliação: </b>
+                              <div *ngFor="let estrela of comment.estrelas">
+                                <i *ngIf="estrela == false" class="bi m-1 bi-star"></i>
+                                <i *ngIf="estrela == true" class="bi m-1 bi-star-fill"></i>
+                              </div>
+                            </div>
                           </div>
                         </div>
                     </div>

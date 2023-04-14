@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { LivrosComponent } from './livros.component';
 import { LivroDetalheComponent } from './livro-detalhe/livro-detalhe.component';
 import { LivroNaoEncontradoComponent } from './livro-nao-encontrado/livro-nao-encontrado.component';
-import { LivrosService } from './livros.service';
 import { LivrosRoutingModule } from './livros.routing.module';
 
 
@@ -22,6 +21,6 @@ import { LivrosRoutingModule } from './livros.routing.module';
     HttpClientModule,
     FormsModule
   ],
-  providers: [LivrosService]
+  providers: []
 })
 export class LivroModule { }

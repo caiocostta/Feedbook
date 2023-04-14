@@ -47,6 +47,13 @@
 .feedback p{
     margin: 0;
 }
+.comentario-info{
+  border: none;
+  outline: none;
+  resize: none;
+  color: white;
+  width: 100%;
+}
 .user-logo{
     width: 40px;
     height: 40px;
