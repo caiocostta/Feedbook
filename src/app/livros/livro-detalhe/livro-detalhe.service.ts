@@ -21,6 +21,10 @@ export class LivroDetalheService {
    handleGostei(id: number, parametro: string){
     if(parametro == 'gostei'){
       if(!this.curtido){
+        if(this.naoGostei){
+          this.naoGostei = false
+          this.userService.getFeedback(id)!.naoGostei--
+        }
         this.curtido = true
         this.userService.getFeedback(id)!.curtidas++
       }else{
@@ -85,7 +89,7 @@ export class LivroDetalheService {
   enviarFeedback(user: any, estrelas: boolean[], comment: string, dataAtual: string, livroId: string){
     this.indexComments++
     localStorage.setItem('indexComments', this.indexComments.toString())
-    let obj = JSON.stringify({id: this.userService.feedbacks.length + 1, data: dataAtual, descricao: comment, livroId: livroId, userId: user.usuario, estrelas: estrelas})
+    let obj = JSON.stringify({id: this.userService.feedbacks.length + 1, data: dataAtual, descricao: comment, livroId: livroId, userId: user.usuario,curtidas: 0, naoGostei: 0, estrelas: estrelas})
     localStorage.setItem(`comments${this.indexComments}`, obj.toString())
     let dbComment: any = localStorage.getItem(`comments${this.indexComments}`)
     estrelas = JSON.parse(dbComment).estrelas

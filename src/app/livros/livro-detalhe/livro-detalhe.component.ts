@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ViewChild, ElementRef } from '@angular/core';
 
 import { ConsultaApiService } from '../consulta-api.service';
 import { UsersService } from 'src/app/user-info/users.service';
@@ -22,7 +23,10 @@ export class LivroDetalheComponent implements OnInit {
   limitado: any = true
 
 
-  constructor(private route: ActivatedRoute, private router: Router ,  private consultaApi: ConsultaApiService, private userService: UsersService, private livroService: LivroDetalheService) {
+  constructor(private route: ActivatedRoute,
+              private router: Router , private consultaApi: ConsultaApiService,
+              private userService: UsersService, private livroService: LivroDetalheService,
+              private elementRef: ElementRef) {
     this.route.params.subscribe(
       (params: any) => {
         this.id = params['id'];
@@ -34,7 +38,6 @@ export class LivroDetalheComponent implements OnInit {
           })
       }
     );
-
   }
 
   users: any
@@ -69,7 +72,9 @@ export class LivroDetalheComponent implements OnInit {
   curtido: boolean = false
   naoGostei: boolean = false
 
-  handleGostei(id: number, parametro: string){
+
+
+  handleGostei(id: number, parametro: string, botaoId: string){
     this.livroService.handleGostei(id, parametro)
     if(parametro == 'gostei'){
       this.curtido = !this.curtido
