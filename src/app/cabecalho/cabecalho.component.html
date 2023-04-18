@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-red">
-    <div class="container align-items-center">
+<nav class="navbar navbar-expand-lg navbar-light bg-green">
+    <div class="container d-flex align-items-center justify-content-center">
         <h1 class="navbar-brand" routerLink="">FeedBook</h1>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -18,7 +18,7 @@
             <button type="button" class="btn btn-outline-light" routerLink="/userInfo/cadastro">Cadastre-se</button>
           </form>
           <form class="d-flex" *ngIf="userOnOff">
-            <button [routerLink]="['/userInfo', nomeUsuario]" type="button" class="btn btn-outline-light bg-dark-red d-flex align-items-center" >
+            <button [routerLink]="['/userInfo', nomeUsuario]" type="button" class="btn btn-outline-light bg-light-green d-flex align-items-center" >
                 <img src="../../assets/{{ userInfo.foto }}" class="user-logo rounded-circle bg-light" [routerLink]="['/userInfo', nomeUsuario]"/>
                 <p [routerLink]="['/userInfo', nomeUsuario]">{{ nomeUsuario }}</p>
                 <i class="bi bi-door-open" (click)="userLogoff()"></i>

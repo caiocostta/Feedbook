@@ -1,26 +1,27 @@
-.bg-dark-red{
-    background-color: #630000;
+.bg-light-green{
+    background-color: #FFF;
+    color: #7C8763 !important;
 }
-.bg-red{
-    background-color: #810000 !important;
+.bg-green{
+    background-color: #92C5A8 !important;
     text-transform: uppercase !important;
 }
-.bg-red a,
-.bg-red h1{
-    color: #FFF !important;
+.bg-green a,
+.bg-green h1{
+    color: #F5F5F5 !important;
     cursor: pointer;
 }
-.bg-red a:hover,
-.bg-red .active{
-    color: #EEEBDD !important;
-    border-bottom: 3px solid #EEEBDD;
+.bg-green a:hover,
+.bg-green .active{
+    color: #7C8763 !important;
+    border-bottom: 3px solid #7C8763;
 }
 .btn-light{
-    color: #810000 !important;
+    color: #92C5A8 !important;
     margin-right: 10px;
 }
 .btn-outline-light:hover{
-    color: #fff !important;
+    color: #92C5A8 !important;
 }
 .btn-outline-light p{
     margin: 0 5px;

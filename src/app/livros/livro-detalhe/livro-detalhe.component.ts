@@ -49,6 +49,13 @@ export class LivroDetalheComponent implements OnInit {
     this.comments = this.userService.feedbacks
     this.user = localStorage.getItem('usuario')
     this.user = JSON.parse(this.user)
+
+    this.curtido = []
+    this.naoGostei = []
+    for(let comment of this.comments){
+      this.curtido.push(false)
+      this.naoGostei.push(false)
+    }
   }
 
   estrelaDisplay: boolean[]= [false, false, false, false, false]
@@ -59,6 +66,14 @@ export class LivroDetalheComponent implements OnInit {
     let dataAtual: any = new Date()
 
     this.livroService.enviarFeedback(this.user, this.estrelaDisplay, this.newFeedback, dataAtual.toString(), this.id)
+    this.curtido = []
+    this.naoGostei = []
+    for(let comment of this.comments){
+      this.curtido.push(false)
+      this.naoGostei.push(false)
+    }
+    this.estrelaDisplay = [false, false, false, false, false]
+    this.newFeedback = ''
   }
 
   mostrarEstrela(indice: number){
@@ -69,19 +84,20 @@ export class LivroDetalheComponent implements OnInit {
     this.estrelaDisplay = this.livroService.esconderEstrela(indice)
   }
 
-  curtido: boolean = false
-  naoGostei: boolean = false
 
 
+  curtido: boolean[] = []
+  naoGostei: boolean[] = []
 
-  handleGostei(id: number, parametro: string, botaoId: string){
-    this.livroService.handleGostei(id, parametro)
+
+  handleGostei(id: number, parametro: string, index: number){
+    this.livroService.handleGostei(id, parametro, index)
     if(parametro == 'gostei'){
-      this.curtido = !this.curtido
-      this.naoGostei = false
+      this.curtido[index] = !this.curtido[index]
+      this.naoGostei[index] = false
     }else if(parametro == 'naoGostei'){
-      this.naoGostei = !this.naoGostei
-      this.curtido = false
+      this.naoGostei[index] = !this.naoGostei[index]
+      this.curtido[index] = false
     }
   }
 

@@ -1,21 +1,22 @@
 /*
     CABEÇALHO E RODAPÉ
 */
-.bg-red{
-    background-color: #810000 !important;
+.bg-green{
+    background-color: #92C5A8 !important;
     text-transform: uppercase !important;
 }
 .bg-dark{
+    background-color: #4B3621 !important;
     color: #FFF !important;
     display: flex;
     justify-content: center;
 }
-.bg-red a,
+.bg-green a,
 .bg-dark a{
     color: #FFF !important;
     cursor: pointer;
 }
-.bg-red a:hover{
+.bg-green a:hover{
     color: #EEEBDD !important;
     border-bottom: 3px solid #EEEBDD;
 }

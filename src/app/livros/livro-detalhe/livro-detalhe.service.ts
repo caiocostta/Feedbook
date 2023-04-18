@@ -7,40 +7,48 @@ import { UsersService } from 'src/app/user-info/users.service';
 export class LivroDetalheService {
 
   indexComments: any = 0
-  curtido: boolean = false
-  naoGostei: boolean = false
+  curtido: boolean[] = []
+  naoGostei: boolean[] = []
+  comments: any
 
   ngOnInit(){
     this.salvarComment()
+    this.comments = this.userService.feedbacks
+    this.curtido = []
+    this.naoGostei = []
+    for(let comment of this.comments){
+      this.curtido.push(false)
+      this.naoGostei.push(false)
+    }
   }
 
   constructor(private userService: UsersService) {
     this.salvarComment()
    }
 
-   handleGostei(id: number, parametro: string){
+   handleGostei(id: number, parametro: string, index: number){
     if(parametro == 'gostei'){
-      if(!this.curtido){
-        if(this.naoGostei){
-          this.naoGostei = false
+      if(!this.curtido[index]){
+        if(this.naoGostei[index]){
+          this.naoGostei[index] = false
           this.userService.getFeedback(id)!.naoGostei--
         }
-        this.curtido = true
+        this.curtido[index] = true
         this.userService.getFeedback(id)!.curtidas++
       }else{
-        this.curtido = false
+        this.curtido[index] = false
         this.userService.getFeedback(id)!.curtidas--
       }
     }else if(parametro == 'naoGostei'){
-      if(!this.naoGostei){
-        if(this.curtido){
-          this.curtido = false
+      if(!this.naoGostei[index]){
+        if(this.curtido[index]){
+          this.curtido[index] = false
           this.userService.getFeedback(id)!.curtidas--
         }
-        this.naoGostei = true
+        this.naoGostei[index] = true
         this.userService.getFeedback(id)!.naoGostei++
       }else{
-        this.naoGostei = false
+        this.naoGostei[index] = false
         this.userService.getFeedback(id)!.naoGostei--
       }
     }

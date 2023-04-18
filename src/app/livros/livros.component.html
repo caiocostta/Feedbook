@@ -6,24 +6,24 @@
     <div class="container-fluid">
         <form class="d-flex">
           <input class="form-control me-2" type="search" #inputSearch placeholder="Títulos, gêneros e autores" aria-label="Search">
-          <button class="btn btn-outline-light" (click)="handleConsult(inputSearch.value)">Pesquisar</button>
+          <button class="btn btn-outline-success align-items-center" (click)="handleConsult(inputSearch.value)">Pesquisar</button>
         </form>
     </div>
 
-      <!-- Catálogo de livros -->
+    <!-- Catálogo de livros -->
 
-      <div class="d-flex justify-content-center container flex-wrap">
-        <div class="d-flex text-center flex-column livro-info bg-dark justify-content-between rounded" *ngFor="let liv of livros">
-            <a [routerLink]="['/livros', liv.id]"><img src="{{ liv.volumeInfo.imageLinks != null ? liv.volumeInfo.imageLinks.smallThumbnail : 'https://i.ibb.co/bFQf7sd/livro-default-foto.jpg' }}" class="img-fluid"/></a>
-            <div class="livro-info--title d-flex align-items-start justify-content-center bg-light rounded-bottom">
-              <h2>{{ liv.volumeInfo.title }}</h2>
-            </div>
-        </div>
+    <div class="d-flex justify-content-between container flex-wrap">
+      <div class="d-flex text-center flex-column justify-content-between livro-info rounded" *ngFor="let liv of livros">
+          <a [routerLink]="['/livros', liv.id]"><img src="{{ liv.volumeInfo.imageLinks != null ? liv.volumeInfo.imageLinks.smallThumbnail : 'https://i.ibb.co/bFQf7sd/livro-default-foto.jpg' }}" class="img-fluid"/></a>
+          <div class="livro-info--title d-flex align-items-center justify-content-center bg-dark rounded-bottom">
+            <h2 class="text-white">{{ liv.volumeInfo.title | slice:0:20 }}</h2>
+          </div>
       </div>
+    </div>
 
-      <!-- Botão Ver Mais -->
+    <!-- Botão Ver Mais -->
 
-      <div class="container-fluid pagination d-flex justify-content-center" *ngIf="bookName != null">
-        <button type="button" class="btn btn-outline-light" (click)="showMore()">Ver Mais</button>
-      </div>
+    <div class="container-fluid pagination d-flex justify-content-center" *ngIf="bookName != null">
+      <button type="button" class="btn btn-outline-success" (click)="showMore()">Ver Mais</button>
+    </div>
 </div>
