@@ -13,8 +13,12 @@
     <!-- Catálogo de livros -->
 
     <div class="d-flex justify-content-between container flex-wrap">
-      <div class="d-flex text-center flex-column justify-content-between livro-info rounded" *ngFor="let liv of livros">
-          <a [routerLink]="['/livros', liv.id]"><img src="{{ liv.volumeInfo.imageLinks != null ? liv.volumeInfo.imageLinks.smallThumbnail : 'https://i.ibb.co/bFQf7sd/livro-default-foto.jpg' }}" class="img-fluid"/></a>
+      <div (mouseover)="moreDetails[i] = 'flex'" (mouseout)="moreDetails[i] = 'none'" class="d-flex text-center flex-column justify-content-between livro-info rounded" *ngFor="let liv of livros; let i = index">
+          <div class="livro-hover rounded d-{{moreDetails[i]}} flex-column justify-content-center align-items-center">
+            <p>{{ liv.volumeInfo.title }}</p>
+            <button [routerLink]="['/livros', liv.id]" class="btn btn-success">Mais Detalhes</button>
+          </div>
+          <a (mouseover)="moreDetails[i] = 'flex'" [routerLink]="['/livros', liv.id]"><img src="{{ liv.volumeInfo.imageLinks != null ? liv.volumeInfo.imageLinks.smallThumbnail : 'https://i.ibb.co/bFQf7sd/livro-default-foto.jpg' }}" class="img-fluid"/></a>
           <div class="livro-info--title d-flex align-items-center justify-content-center bg-dark rounded-bottom">
             <h2 class="text-white">{{ liv.volumeInfo.title | slice:0:20 }}</h2>
           </div>

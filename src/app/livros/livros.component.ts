@@ -15,6 +15,8 @@ export class LivrosComponent implements OnInit {
   bookName: any;
   dados: any;
 
+  moreDetails: string[] = []
+
   constructor(private livrosService: LivrosService) {}
 
   handleConsult(name: any){
@@ -42,6 +44,9 @@ export class LivrosComponent implements OnInit {
 
   ngOnInit(){
     this.livrosService.calloutService('Angular').subscribe(dados => this.livros = dados.items);
+    for(let livro of this.livros){
+      this.moreDetails.push('none')
+    }
   }
 
 }

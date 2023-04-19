@@ -44,19 +44,28 @@
     background-color: #80C7B8 !important;
 }
 .livro-info{
+    position: relative;
     margin: 50px 15px;
     padding: 15px 5px;
-    min-height: 230px;
+    min-height: 250px;
     width: 15%;
     box-shadow: 0px 0px 10px #aaa;
-    transition-duration: 300ms;
+}
+.livro-hover{
+    display: none;
+    margin: -15px -5px;
+    position: absolute;
+    top: 15px;
+    bottom: 15px;
+    left: 5px;
+    right: 5px;
+    transition-duration: 380ms;
     transform-origin: 0% 0%;
 }
-/*.livro-info:hover{
-    animation-name: widthDiv;
-    animation-duration: 300ms;
-    width: 30%;
+.livro-hover:hover{
+    background-color: rgba(0, 0, 0, 0.9);
 }
+/*
 #livroTeste:hover{
     animation-name: widthDiv;
     animation-duration: 300ms;
