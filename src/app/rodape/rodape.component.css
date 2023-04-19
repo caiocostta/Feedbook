@@ -2,11 +2,11 @@
     CABEÇALHO E RODAPÉ
 */
 .bg-green{
-    background-color: #92C5A8 !important;
+    background-color: #2E8B57 !important;
     text-transform: uppercase !important;
 }
 .bg-dark{
-    background-color: #4B3621 !important;
+    background-color: #7B8C69 !important;
     color: #FFF !important;
     display: flex;
     justify-content: center;

@@ -1,31 +1,46 @@
 .container{
-    min-height: 83vh;
+  min-height: 83vh;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 .container-fluid{
-    width: 70%;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .livro-info{
-    margin-bottom: 30px;
-    margin-top: 30px;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
 .livro-info--img img{
     min-width: 250px;
+    box-shadow: 0px 0px 10px #aaa;
 }
 .livro-info--desc{
     margin-left: 20px;
     margin-top: 20px;
 }
 .livro-info--desc h1{
+  color: #000000;
     font-size: 15px !important;
+}
+.livro-info--desc b{
+  color: #2E8B57;
+  font-size: 20px !important;
 }
 #description{
     overflow: hidden !important;
 }
-
-.livro-info--desc b{
-    font-size: 20px !important;
+.btn-outline-light{
+  border-color: #2E8B57;
+  color: #2E8B57;
 }
+.btn-outline-light:hover{
+  background-color: #2E8B57;
+  color: #fff;
+}
+
+
 
 .feedbacks-livro{
     margin-top: 30px;
@@ -35,9 +50,6 @@
     border: none;
     border-radius: 5px !important;
     background: none !important;
-}
-.card-body{
-    border-radius: 5px !important;
 }
 .feedback{
     margin-top: 15px;
@@ -62,10 +74,10 @@
     height: 40px;
 }
 .bg-dark-red{
-    background-color: #630000;
+    background-color: #D9D9D9;
 }
 .bg-red{
-    background-color: #810000 !important;
+    background-color: #2E8B57 !important;
 }
 .bg-light{
     color: #1B1717;

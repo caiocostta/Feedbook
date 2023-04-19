@@ -19,7 +19,7 @@
           </form>
           <form class="d-flex" *ngIf="userOnOff">
             <button [routerLink]="['/userInfo', nomeUsuario]" type="button" class="btn btn-outline-light bg-light-green d-flex align-items-center" >
-                <img src="../../assets/{{ userInfo.foto }}" class="user-logo rounded-circle bg-light" [routerLink]="['/userInfo', nomeUsuario]"/>
+                <img src="../../assets/{{ userInfo.foto }}" class="user-logo rounded bg-light" [routerLink]="['/userInfo', nomeUsuario]"/>
                 <p [routerLink]="['/userInfo', nomeUsuario]">{{ nomeUsuario }}</p>
                 <i class="bi bi-door-open" (click)="userLogoff()"></i>
             </button>

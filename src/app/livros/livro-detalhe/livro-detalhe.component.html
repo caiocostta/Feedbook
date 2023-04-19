@@ -1,5 +1,5 @@
 <div class="container d-flex flex-column justify-content-center" *ngIf="livro">
-    <div class="livro-info d-flex justify-content-center container-fluid">
+    <div class="livro-info rounded d-flex justify-content-center container-fluid">
         <div class="livro-info--img d-flex align-items-start">
           <img src="{{ livro.imageLinks != null ? livro.imageLinks.smallThumbnail : 'https://i.ibb.co/bFQf7sd/livro-default-foto.jpg'}}" />
         </div>
@@ -18,7 +18,7 @@
               Feedbacks de leitores
             </div>
             <div class="card-body bg-dark-red" *ngIf="user != undefined">
-              <div class="feedback card shadow-lg">
+              <div class="feedback card shadow-lg m-auto">
                 <div>
                   <div class="feedback-info card-header bg-light d-flex justify-content-between align-items-center">
                     <div class="user-info d-flex align-items-center">
@@ -26,8 +26,8 @@
                       <p>{{ user.nome }}</p>
                     </div>
                   </div>
-                  <div class="card-body bg-dark novo-comentario">
-                    <textarea [(ngModel)]="newFeedback" name="comentarioInfo" class="bg-dark comentario-info" rows="5"></textarea>
+                  <div class="card-body bg-light novo-comentario">
+                    <textarea [(ngModel)]="newFeedback" name="comentarioInfo" class="bg-light comentario-info" rows="5"></textarea>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="d-flex align-items-center">
                         <b>Avaliação: </b>
@@ -46,7 +46,7 @@
                         <i (click)="mostrarEstrela(4)" *ngIf="!estrelaDisplay[4]" class="bi m-1 bi-star"></i>
                         <i (click)="esconderEstrela(4)" *ngIf="estrelaDisplay[4]" class="bi m-1 bi-star-fill"></i>
                       </div>
-                      <button (click)="enviarFeedback()" class="btn btn-dark"> <i class="bi bi-send-fill m-auto"></i> </button>
+                      <button (click)="enviarFeedback()" class="btn btn-light"> <i class="bi bi-send-fill m-auto"></i> </button>
                     </div>
                   </div>
                 </div>
@@ -55,7 +55,7 @@
             <div *ngFor="let user of users">
               <div *ngFor="let comment of comments; ; let i = index">
                 <div class="card-body bg-dark-red" *ngIf="comment.livroId == id && comment.userId == user.usuario">
-                    <div class="feedback card shadow-lg">
+                    <div class="feedback card shadow-lg m-auto">
                         <div>
                           <div class="feedback-info card-header bg-light d-flex justify-content-between align-items-center">
                             <div class="user-info d-flex align-items-center">
@@ -64,7 +64,7 @@
                             </div>
                             <p>{{ comment.data | date: 'dd/MM/yyyy HH:mm' }}</p>
                           </div>
-                          <div class="card-body bg-dark">
+                          <div class="card-body bg-light">
                             <p class="card-text">{{ comment.descricao }}</p>
                             <div class="d-flex align-items-center">
                               <b style="margin-right: 5px;" >Avaliação: </b>
