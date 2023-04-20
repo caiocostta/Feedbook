@@ -1,11 +1,15 @@
 *{
-    color: #fff;
+    color: #000;
 }
 .container{
     min-height: 83vh;
 }
 .container h1{
-    margin-bottom: 50px;
+    padding-bottom: 50px;
+    color: #2E8B57;
+}
+.container h2{
+    color: #2E8B57;
 }
 section .container-fluid{
     width: 50% !important;
@@ -16,13 +20,13 @@ section .container-fluid{
 .contatos-info{
     padding: 30px;
 }
-.bg-red{
-    background-color: #610000;
+.bg-green{
+    background-color: #D9D9D9 !important;
 }
 #nomeCompleto{
     border: none;
     border-bottom: 1px solid #bbb;
-    color: #fff;
+    color: #000;
 }
 #nomeCompleto::placeholder{
     text-align: center;
@@ -32,12 +36,19 @@ section .container-fluid{
 #contatoMsg{
     border: none;
     border-bottom: 1px solid #bbb;
-    color: #fff;
+    color: #000;
     resize: none;
 }
 #contatoMsg::placeholder{
     font-size: 20px;
     color: #bbb;
+}
+.btn-outline-success{
+    color: #2E8B57;
+    border-color: #2E8B57;
+}
+.btn-outline-success:hover{
+    color: #FFF;
 }
 
 @media (max-width: 990px){

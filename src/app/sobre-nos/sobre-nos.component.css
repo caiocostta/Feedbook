@@ -1,9 +1,14 @@
 *{
-    color: #fff;
+    color: #000;
+}
+h1{
+    color: #2E8B57;
+    text-align: center;
 }
 .container-fluid{
-    width: 60%;
+    width: 100%;
     min-height: 83vh;
+    text-align: justify;
 }
 .container-fluid p{
     margin: 0;
