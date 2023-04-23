@@ -61,6 +61,7 @@
     right: 5px;
     transition-duration: 380ms;
     transform-origin: 0% 0%;
+    background-color: none;
 }
 .livro-hover:hover{
     background-color: rgba(0, 0, 0, 0.9);

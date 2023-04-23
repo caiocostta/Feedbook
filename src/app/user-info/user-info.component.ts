@@ -17,6 +17,8 @@ export class UserInfoComponent implements OnInit {
   nomeUsuario: string = '';
   usuarioLogado: Usuario | any = '';
 
+  isActive: boolean = true
+
   constructor(private userService: UsersService, private route: ActivatedRoute, private authService: AuthService) {
     this.route.params.subscribe((params: any) => {
       this.nomeUsuario = params.nomeUsuario
@@ -31,7 +33,7 @@ export class UserInfoComponent implements OnInit {
         this.botaoEditar = false
       }
     })
-    
+
    }
 
   ngOnInit(): void {

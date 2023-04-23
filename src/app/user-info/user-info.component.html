@@ -1,27 +1,33 @@
-<div class="container">
-    <div style="height: 30vh;" class="d-flex align-items-center flex-wrap">
-        <div style="flex: 1; height: 100%;" class="d-flex flex-column border align-items-center">
-            <div class="image-area">
-                <img src="../../assets/{{ user.foto }}"/>
-            </div>
-            <ul>
-                <li>Feedbacks</li>
-                <li>Informações</li>
-            </ul>
-        </div>
-        <div style="margin-top: 100px !important; flex: 3;" class="d-flex flex-column m-auto">
-            <h2>Dados Pessoais</h2>
-            <div class="livro-info--desc d-flex flex-column flex-grow-1 text-center border">
-                    <h3 class="m-2"><p style="width: 100%; text-align: start;">Nome:</p> {{ user.nome }} </h3>
-                    <h3 class="m-2"><p style="width: 100%; text-align: start;"> Usuário:</p> {{ user.usuario }}</h3>
-                    <h3 class="m-2"><p style="width: 100%; text-align: start;"> E-mail:</p> {{ user.email }}</h3>
-                    <h3 class="m-2"><p style="width: 100%; text-align: start;"> Telefone:</p> {{ user.tel }}</h3>
-                <div>
-                    <a class="btn btn-outline-light" *ngIf="botaoEditar" routerLink="edit">Editar Informações</a>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="container d-flex align-items-center">
+  <div style="height: 70vh; flex: 1;" class="d-flex flex-column align-items-center flex-wrap">
+      <div style="width: 100%;margin-right: 20px;" class="user-header d-flex align-items-center bg-light p-4">
+          <div class="image-area">
+              <img class="rounded" src="../../assets/{{ user.foto }}"/>
+          </div>
+          <h3 style="margin-bottom: 0px !important;"><p style="width: 150px;" class="text-center m-auto">{{ user.nome }}</p></h3>
+          <ul style="background-color: #FFF;" class="user-nav d-flex border rounded">
+            <li [ngClass]="{'active': isActive}" (click)="isActive = true" class="p-3">Informações</li>
+            <li [ngClass]="{'active': !isActive}" (click)="isActive = false" class="p-3">Feedbacks</li>
+          </ul>
+      </div>
+      <div *ngIf="isActive" style="flex: 3;" class="d-flex flex-column m-3">
+          <h2>Dados Pessoais</h2>
+          <div style="width: 100%; margin-top: 0 !important;" class="livro-info--desc d-flex flex-column text-center border p-3 m-auto">
+              <div class="d-flex justify-content-center">
+                <h3 class="m-2"><p style="width: 100%; text-align: start;">Nome</p>{{ user.nome }}</h3>
+                <h3 class="m-2"><p style="width: 100%; text-align: start;"> Usuário</p>{{ user.usuario }}</h3>
+                <h3 class="m-2"><p style="width: 100%; text-align: start;"> E-mail </p>{{ user.email }} </h3>
+              </div>
+              <div class="d-flex justify-content-center">
+                <h3 class="m-2"><p style="width: 100%; text-align: start;"> Telefone </p>{{ user.tel }} </h3>
+                <h3 class="m-2"><p style="width: 100%; text-align: start;"> Gênero </p>{{ user.genero }} </h3>
+              </div>
+              <div>
+                  <a class="btn btn-success" *ngIf="botaoEditar" routerLink="edit">Editar Informações</a>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>
 
 
