@@ -1,31 +1,66 @@
 <div class="container d-flex align-items-center">
-  <div style="height: 70vh; flex: 1;" class="d-flex flex-column align-items-center flex-wrap">
-      <div style="width: 100%;margin-right: 20px;" class="user-header d-flex align-items-center bg-light p-4">
+  <div style="min-height: 70vh; flex: 1;" class="d-flex flex-column align-items-center justify-content-center">
+      <div style="width: 100%;" class="user-header d-flex align-items-center border bg-light rounded p-4">
           <div class="image-area">
               <img class="rounded" src="../../assets/{{ user.foto }}"/>
           </div>
           <h3 style="margin-bottom: 0px !important;"><p style="width: 150px;" class="text-center m-auto">{{ user.nome }}</p></h3>
           <ul style="background-color: #FFF;" class="user-nav d-flex border rounded">
             <li [ngClass]="{'active': isActive}" (click)="isActive = true" class="p-3">Informações</li>
-            <li [ngClass]="{'active': !isActive}" (click)="isActive = false" class="p-3">Feedbacks</li>
+            <li [ngClass]="{'active': !isActive}" (click)="getFeedbacks()" class="p-3">Feedbacks</li>
           </ul>
       </div>
-      <div *ngIf="isActive" style="flex: 3;" class="d-flex flex-column m-3">
+      <div *ngIf="isActive" style="width: 100%; align-self: flex-start; margin-left: 0px !important;" class="d-flex flex-column m-3">
           <h2>Dados Pessoais</h2>
-          <div style="width: 100%; margin-top: 0 !important;" class="livro-info--desc d-flex flex-column text-center border p-3 m-auto">
-              <div class="d-flex justify-content-center">
-                <h3 class="m-2"><p style="width: 100%; text-align: start;">Nome</p>{{ user.nome }}</h3>
-                <h3 class="m-2"><p style="width: 100%; text-align: start;"> Usuário</p>{{ user.usuario }}</h3>
-                <h3 class="m-2"><p style="width: 100%; text-align: start;"> E-mail </p>{{ user.email }} </h3>
-              </div>
-              <div class="d-flex justify-content-center">
-                <h3 class="m-2"><p style="width: 100%; text-align: start;"> Telefone </p>{{ user.tel }} </h3>
-                <h3 class="m-2"><p style="width: 100%; text-align: start;"> Gênero </p>{{ user.genero }} </h3>
-              </div>
+          <div style="width: 100%; margin-top: 0 !important;" class="d-flex flex-column text-center border rounded bg-light p-3 m-auto">
+                <h3 class="m-2"><p style="width: 100%; text-align: start;">Nome: <span>{{ user.nome }}</span></p></h3>
+                <h3 class="m-2"><p style="width: 100%; text-align: start;"> Usuário <span>{{ user.usuario }}</span></p></h3>
+                <h3 class="m-2"><p style="width: 100%; text-align: start;"> Telefone <span>{{ user.tel }}</span> </p></h3>
+                <h3 class="m-2"><p style="width: 100%; text-align: start;"> E-mail <span>{{ user.email }}</span> </p></h3>
+                <h3 class="m-2"><p style="width: 100%; text-align: start;"> Gênero <span>{{ user.genero }}</span> </p></h3>
               <div>
                   <a class="btn btn-success" *ngIf="botaoEditar" routerLink="edit">Editar Informações</a>
               </div>
           </div>
+      </div>
+      <div *ngIf="!isActive" style="width: 100%; align-self: flex-start; margin-left: 0px !important;" class="d-flex flex-column m-3">
+        <h2>Feedbacks</h2>
+        <div style="width: 100%; margin-top: 0 !important;" class="d-flex flex-column text-center border rounded bg-light p-3 m-auto">
+          <div *ngFor="let livro of livroFeedback; let i = index">
+            <div *ngIf="livro && livro.id != livroFeedback[i - 1]?.id">
+              <div *ngFor="let feedback of feedbacks; let i = index" class="card-body bg-dark-red">
+                <div *ngIf="feedback.id != feedbacks[i - 1]?.id && feedback.id != feedbacks[i + 1]?.id" class="feedback card shadow-lg m-auto">
+                  <div>
+                    <div class="feedback-info card-header bg-light d-flex justify-content-between align-items-center">
+                      <div class="user-info d-flex align-items-center">
+                        <div class="user-logo rounded-circle bg-dark"><img class="user-logo rounded-circle" src="../../../assets/{{ user.foto }}" alt=""></div>
+                        <p>{{ user.nome }}</p>
+                      </div>
+                      <a *ngIf="livro.id == feedback.livroId" [routerLink]="['/livros', livro.id]">{{ livro.volumeInfo.title }}</a>
+                      <p>{{ feedback.data | date: 'dd/MM/yyyy HH:mm' }}</p>
+                    </div>
+                    <div class="card-body bg-light">
+                      <p class="text-start card-text">{{ feedback.descricao }}</p>
+                      <div class="d-flex align-items-center">
+                        <b style="margin-right: 5px;" >Avaliação: </b>
+                        <div *ngFor="let estrela of feedback.estrelas">
+                          <i *ngIf="estrela == false" class="bi m-1 bi-star"></i>
+                          <i *ngIf="estrela == true" class="bi m-1 bi-star-fill"></i>
+                        </div>
+                        <div class="d-flex m-2 align-items-center">
+                          <p style="margin-left: 15px !important;" class="m-1">{{ feedback.curtidas }}</p>
+                          <i class="bi btn-gostei bi-hand-thumbs-up fs-5 m-1"></i>
+                          <p style="margin-left: 15px !important;" class="m-1">{{ feedback.naoGostei }}</p>
+                          <i class="bi btn-gostei bi-hand-thumbs-down fs-5 m-1"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
   </div>
 </div>

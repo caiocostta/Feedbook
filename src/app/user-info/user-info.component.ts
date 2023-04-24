@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UsersService } from './users.service';
 import { AuthService } from './login/auth.service';
 import { Usuario } from './login/usuario';
+import { ConsultaApiService } from '../livros/consulta-api.service';
 
 @Component({
   selector: 'app-user-info',
@@ -18,8 +19,13 @@ export class UserInfoComponent implements OnInit {
   usuarioLogado: Usuario | any = '';
 
   isActive: boolean = true
+  feedbacks: any;
+  livroFeedback: any = [{}];
 
-  constructor(private userService: UsersService, private route: ActivatedRoute, private authService: AuthService) {
+  constructor(private userService: UsersService,
+              private route: ActivatedRoute,
+              private authService: AuthService,
+              private consultaApi: ConsultaApiService) {
     this.route.params.subscribe((params: any) => {
       this.nomeUsuario = params.nomeUsuario
       this.user = this.userService.getUser(this.nomeUsuario)
@@ -33,8 +39,19 @@ export class UserInfoComponent implements OnInit {
         this.botaoEditar = false
       }
     })
-
    }
+
+   getFeedbacks(){
+    this.isActive = false
+    this.feedbacks = this.userService.getFeedbackByUser(this.user.usuario)
+    this.livroFeedback.shift()
+    for(let feedback of this.feedbacks){
+      this.consultaApi.calloutServiceOnly(feedback.livroId).subscribe((livroFeedback) => {
+        this.livroFeedback.push(livroFeedback)
+        console.log(this.livroFeedback)
+      })
+    }
+  }
 
   ngOnInit(): void {
     this.authService.mostrarMenuEmitter.subscribe(v => {

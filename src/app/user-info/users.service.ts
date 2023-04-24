@@ -27,6 +27,10 @@ export class UsersService {
     const feedbacks: any = this.getFeedbacks();
     return this.feedbacks.find((feedback: any) => id == feedback.id)
   }
+  getFeedbackByUser(usuario: string){
+    const feedbacks: any = this.getFeedbacks();
+    return this.feedbacks.filter((feedback: any) => usuario == feedback.userId)
+  }
 
   getUsers(){
     return this.users;
