@@ -31,6 +31,10 @@ export class UsersService {
     const feedbacks: any = this.getFeedbacks();
     return this.feedbacks.filter((feedback: any) => usuario == feedback.userId)
   }
+  getFeedbackByBook(livroId: string){
+    const feedbacks: any = this.getFeedbacks();
+    return this.feedbacks.filter((feedback: any) => livroId == feedback.livroId)
+  }
 
   getUsers(){
     return this.users;

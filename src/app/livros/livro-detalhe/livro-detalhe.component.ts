@@ -25,8 +25,7 @@ export class LivroDetalheComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router , private consultaApi: ConsultaApiService,
-              private userService: UsersService, private livroService: LivroDetalheService,
-              private elementRef: ElementRef) {
+              private userService: UsersService, private livroService: LivroDetalheService) {
     this.route.params.subscribe(
       (params: any) => {
         this.id = params['id'];

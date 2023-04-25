@@ -20,7 +20,8 @@ export class UserInfoComponent implements OnInit {
 
   isActive: boolean = true
   feedbacks: any;
-  livroFeedback: any = [{}];
+  livroFeedback: any = [];
+  indexLivro: number = 0
 
   constructor(private userService: UsersService,
               private route: ActivatedRoute,
@@ -46,11 +47,29 @@ export class UserInfoComponent implements OnInit {
     this.feedbacks = this.userService.getFeedbackByUser(this.user.usuario)
     this.livroFeedback.shift()
     for(let feedback of this.feedbacks){
-      this.consultaApi.calloutServiceOnly(feedback.livroId).subscribe((livroFeedback) => {
+      this.consultaApi.calloutServiceOnly(feedback.livroId).subscribe((livroFeedback: any) => {
+        let livros: any = [];
         this.livroFeedback.push(livroFeedback)
-        console.log(this.livroFeedback)
+        for(let livro of this.livroFeedback){
+          delete livro.etag
+          delete livro.kind
+          delete livro.saleInfo
+          delete livro.selfLink
+          delete livro.accessInfo
+        }
       })
     }
+    console.log(this.livroFeedback)
+    for(let i = 0; i <= this.livroFeedback.length; i++){
+      let io = i - 1;
+      if(this.livroFeedback[i] == this.livroFeedback[io]){
+        console.log(i, io)
+        console.log(this.livroFeedback[0], this.livroFeedback[0])
+        this.livroFeedback.splice(i, 1)
+      }
+    }
+    console.log(this.livroFeedback)
+
   }
 
   ngOnInit(): void {
