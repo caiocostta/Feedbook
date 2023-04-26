@@ -65,6 +65,7 @@ p, h2{
 .feedback-info a{
   text-decoration: none;
   font-weight: bold;
+  cursor: pointer;
 }
 .feedback-info a:hover{
   color: #2E8B57;

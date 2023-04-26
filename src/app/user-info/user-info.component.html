@@ -6,11 +6,12 @@
           </div>
           <h3 style="margin-bottom: 0px !important;"><p style="width: 150px;" class="text-center m-auto">{{ user.nome }}</p></h3>
           <ul style="background-color: #FFF;" class="user-nav d-flex border rounded">
-            <li [ngClass]="{'active': isActive}" (click)="isActive = true" class="p-3">Informações</li>
-            <li [ngClass]="{'active': !isActive}" (click)="getFeedbacks()" class="p-3">Feedbacks</li>
+            <li [ngClass]="{'active': isActive == 'info'}" (click)="isActive = 'info'" class="p-3">Informações</li>
+            <li [ngClass]="{'active': isActive == 'feed'}" (click)="getFeedbacks()" class="p-3">Feedbacks</li>
+            <li [ngClass]="{'active': isActive == 'fav'}" (click)="isActive = 'fav'" class="p-3">Favoritos</li>
           </ul>
       </div>
-      <div *ngIf="isActive" style="width: 100%; align-self: flex-start; margin-left: 0px !important;" class="d-flex flex-column m-3">
+      <div *ngIf="isActive == 'info'" style="width: 100%; align-self: flex-start; margin-left: 0px !important;" class="d-flex flex-column m-3">
           <h2>Dados Pessoais</h2>
           <div style="width: 100%; margin-top: 0 !important;" class="d-flex flex-column text-center border rounded bg-light p-3 m-auto">
                 <h3 class="m-2"><p style="width: 100%; text-align: start;">Nome: <span>{{ user.nome }}</span></p></h3>
@@ -23,35 +24,37 @@
               </div>
           </div>
       </div>
-      <div *ngIf="!isActive" style="width: 100%; align-self: flex-start; margin-left: 0px !important;" class="d-flex flex-column m-3">
+      <div *ngIf="isActive == 'feed'" style="width: 100%; align-self: flex-start; margin-left: 0px !important;" class="d-flex flex-column m-3">
         <h2>Feedbacks</h2>
         <div style="width: 100%; margin-top: 0 !important;" class="d-flex flex-column text-center border rounded bg-light p-3 m-auto">
           <div *ngFor="let livro of livroFeedback; let i = index">
-            <div *ngIf="livro">
-              <a>{{ livro.volumeInfo.title }}</a>
-              <div *ngFor="let feedback of feedbacks; let i = index" class="card-body bg-dark-red">
-                <div class="feedback card shadow-lg m-auto">
-                  <div>
-                    <div class="feedback-info card-header bg-light d-flex justify-content-between align-items-center">
-                      <div class="user-info d-flex align-items-center">
-                        <div class="user-logo rounded-circle bg-dark"><img class="user-logo rounded-circle" src="../../../assets/{{ user.foto }}" alt=""></div>
-                        <p>{{ user.nome }}</p>
-                      </div>
-                      <p>{{ feedback.data | date: 'dd/MM/yyyy HH:mm' }}</p>
-                    </div>
-                    <div class="card-body bg-light">
-                      <p class="text-start card-text">{{ feedback.descricao }}</p>
-                      <div class="d-flex align-items-center">
-                        <b style="margin-right: 5px;" >Avaliação: </b>
-                        <div *ngFor="let estrela of feedback.estrelas">
-                          <i *ngIf="estrela == false" class="bi m-1 bi-star"></i>
-                          <i *ngIf="estrela == true" class="bi m-1 bi-star-fill"></i>
+            <div class="feedback-info" *ngIf="livro">
+              <a [routerLink]="['/livros', livro.id]">{{ livro.volumeInfo.title }}</a>
+              <div *ngFor="let feedback of feedbacks; let i = index">
+                <div *ngIf="livro.id == feedback.livroId" class="card-body">
+                  <div  class="feedback card shadow-lg m-auto">
+                    <div>
+                      <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                        <div class="user-info d-flex align-items-center">
+                          <div class="user-logo rounded-circle"><img class="user-logo rounded-circle" src="../../../assets/{{ user.foto }}" alt=""></div>
+                          <p>{{ user.nome }}</p>
                         </div>
-                        <div class="d-flex m-2 align-items-center">
-                          <p style="margin-left: 15px !important;" class="m-1">{{ feedback.curtidas }}</p>
-                          <i class="bi btn-gostei bi-hand-thumbs-up fs-5 m-1"></i>
-                          <p style="margin-left: 15px !important;" class="m-1">{{ feedback.naoGostei }}</p>
-                          <i class="bi btn-gostei bi-hand-thumbs-down fs-5 m-1"></i>
+                        <p>{{ feedback.data | date: 'dd/MM/yyyy HH:mm' }}</p>
+                      </div>
+                      <div class="card-body bg-light">
+                        <p class="text-start card-text">{{ feedback.descricao }}</p>
+                        <div class="d-flex align-items-center">
+                          <b style="margin-right: 5px;" >Avaliação: </b>
+                          <div *ngFor="let estrela of feedback.estrelas">
+                            <i *ngIf="estrela == false" class="bi m-1 bi-star"></i>
+                            <i *ngIf="estrela == true" class="bi m-1 bi-star-fill"></i>
+                          </div>
+                          <div class="d-flex m-2 align-items-center">
+                            <p style="margin-left: 15px !important;" class="m-1">{{ feedback.curtidas }}</p>
+                            <i class="bi btn-gostei bi-hand-thumbs-up fs-5 m-1"></i>
+                            <p style="margin-left: 15px !important;" class="m-1">{{ feedback.naoGostei }}</p>
+                            <i class="bi btn-gostei bi-hand-thumbs-down fs-5 m-1"></i>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -61,6 +64,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div *ngIf="isActive == 'fav'">
+        Teste
       </div>
   </div>
 </div>

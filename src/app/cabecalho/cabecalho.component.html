@@ -15,7 +15,7 @@
           </ul>
           <form class="d-flex" *ngIf="!userOnOff">
             <button type="button" class="btn btn-light" routerLink="/userInfo/login">Entrar</button>
-            <button type="button" class="btn btn-outline-light" routerLink="/userInfo/cadastro">Cadastre-se</button>
+            <button type="button" class="d-none btn btn-outline-light" routerLink="/userInfo/cadastro">Cadastre-se</button>
           </form>
           <form class="d-flex" *ngIf="userOnOff">
             <button [routerLink]="['/userInfo', nomeUsuario]" type="button" class="btn btn-outline-light bg-light-green d-flex align-items-center" >
