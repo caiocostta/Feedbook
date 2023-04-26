@@ -1,11 +1,15 @@
 .container{
+    color: #000;
     min-height: 83vh;
+}
+form{
+    background-color: #d9d9d9;
 }
 h1{
     margin-bottom: 30px;
 }
 .bg-red{
-    background-color: #610000;
+    background-color: #2E8B57;
 }
 .mb-3 input{
     border: none;
