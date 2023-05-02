@@ -1,6 +1,6 @@
 <div class="container d-flex align-items-center">
   <div style="min-height: 70vh; flex: 1;" class="d-flex flex-column align-items-center justify-content-center">
-      <div style="width: 100%;" class="user-header d-flex align-items-center border bg-light rounded p-4">
+      <div style="width: 100%; margin-top: 30px;" class="user-header d-flex align-items-center border bg-light rounded p-4">
           <div class="image-area">
               <img class="rounded" src="../../assets/{{ user.foto }}"/>
           </div>
@@ -8,17 +8,26 @@
           <ul style="background-color: #FFF;" class="user-nav d-flex border rounded">
             <li [ngClass]="{'active': isActive == 'info'}" (click)="isActive = 'info'" class="p-3">Informações</li>
             <li [ngClass]="{'active': isActive == 'feed'}" (click)="getFeedbacks()" class="p-3">Feedbacks</li>
-            <li [ngClass]="{'active': isActive == 'fav'}" (click)="isActive = 'fav'" class="p-3">Favoritos</li>
+            <li [ngClass]="{'active': isActive == 'fav'}" (click)="getFavoritos()" class="p-3">Favoritos</li>
           </ul>
       </div>
       <div *ngIf="isActive == 'info'" style="width: 100%; align-self: flex-start; margin-left: 0px !important;" class="d-flex flex-column m-3">
           <h2>Dados Pessoais</h2>
-          <div style="width: 100%; margin-top: 0 !important;" class="d-flex flex-column text-center border rounded bg-light p-3 m-auto">
-                <h3 class="m-2"><p style="width: 100%; text-align: start;">Nome: <span>{{ user.nome }}</span></p></h3>
-                <h3 class="m-2"><p style="width: 100%; text-align: start;"> Usuário <span>{{ user.usuario }}</span></p></h3>
-                <h3 class="m-2"><p style="width: 100%; text-align: start;"> Telefone <span>{{ user.tel }}</span> </p></h3>
-                <h3 class="m-2"><p style="width: 100%; text-align: start;"> E-mail <span>{{ user.email }}</span> </p></h3>
-                <h3 class="m-2"><p style="width: 100%; text-align: start;"> Gênero <span>{{ user.genero }}</span> </p></h3>
+          <div style="width: 70%; margin-top: 0 !important;" class="user-dados d-flex flex-column text-center border rounded bg-light p-3 m-auto">
+              <div class="d-flex justify-content-between p-3">
+                <div>
+                  <h3 class="m-2"><p style="width: 100%; text-align: start;">Nome: <span>{{ user.nome }}</span></p></h3>
+                  <h3 class="m-2"><p style="width: 100%; text-align: start;"> Gênero: <span>{{ user.genero }}</span> </p></h3>
+                  <h3 class="m-2"><p style="width: 100%; text-align: start;"> CPF: <span>{{ user.cpf }}</span></p></h3>
+                  <h3 class="m-2"><p style="width: 100%; text-align: start;"> Telefone: <span>{{ user.tel }}</span> </p></h3>
+                </div>
+                <div>
+                  <h3 class="m-2"><p style="width: 100%; text-align: start;"> Celular: <span>{{ user.cel }}</span> </p></h3>
+                  <h3 class="m-2"><p style="width: 100%; text-align: start;"> E-mail: <span>{{ user.email }}</span> </p></h3>
+                  <h3 class="m-2"><p style="width: 100%; text-align: start;"> Usuário: <span>{{ user.usuario }}</span></p></h3>
+                  <h3 class="m-2"><p style="width: 100%; text-align: start;"> Data de Nascimento: <span>{{ user.dataNasc }}</span></p></h3>
+                </div>
+              </div>
               <div>
                   <a class="btn btn-success" *ngIf="botaoEditar" routerLink="edit">Editar Informações</a>
               </div>
@@ -28,7 +37,7 @@
         <h2>Feedbacks</h2>
         <div style="width: 100%; margin-top: 0 !important;" class="d-flex flex-column text-center border rounded bg-light p-3 m-auto">
           <div *ngFor="let livro of livroFeedback; let i = index">
-            <div class="feedback-info" *ngIf="livro">
+            <div class="feedback-info bg-dark border rounded m-3 p-1" *ngIf="livro">
               <a [routerLink]="['/livros', livro.id]">{{ livro.volumeInfo.title }}</a>
               <div *ngFor="let feedback of feedbacks; let i = index">
                 <div *ngIf="livro.id == feedback.livroId" class="card-body">
@@ -65,8 +74,17 @@
           </div>
         </div>
       </div>
-      <div *ngIf="isActive == 'fav'">
-        Teste
+      <div style="width: 100%;" class="d-flex" *ngIf="isActive == 'fav' && livrosFavoritos">
+        <div style="width: 100%;" class="d-flex" *ngFor="let livroF of livrosFavoritos">
+          <div class="d-flex justify-content-between container flex-wrap">
+            <div class="d-flex text-center flex-column justify-content-between livro-info rounded">
+                <a [routerLink]="['/livros', livroF.id]"><img src="{{ livroF.volumeInfo.imageLinks != null ? livroF.volumeInfo.imageLinks.smallThumbnail : 'https://i.ibb.co/bFQf7sd/livro-default-foto.jpg' }}" class="img-fluid"/></a>
+                <div class="livro-info--title d-flex align-items-center justify-content-center bg-dark--green rounded-bottom">
+                  <h2 class="text-white">{{ livroF.volumeInfo.title }}</h2>
+                </div>
+            </div>
+          </div>
+        </div>
       </div>
   </div>
 </div>

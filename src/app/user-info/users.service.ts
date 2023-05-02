@@ -8,9 +8,9 @@ export class UsersService {
   constructor() {}
 
   users = [
-    {nome: 'Caio Costa', usuario: 'caioken__', email: 'caio.08costa@gmail.com', tel: 11996083908, senha: '12345', foto: 'perfil.jpeg', seguidores: 100, livrosFavoritos: ['tL6aDAEACAAJ'], genero: 'masculino'},
-    {nome: 'João Santos', usuario: 'joaozinho', email: 'jsantos@gmail.com', tel: 11954855648, senha: '54321', foto: 'perfil2.jpg', seguidores: 150, livrosFavoritos: [], genero: 'masculino'},
-    {nome: 'Maria Costa', usuario: 'ma.costa123', email: 'ma.costa123@gmail.com', tel: 11954871254, senha: '00000', foto: 'perfil3.jpg', seguidores: 50, livrosFavoritos: [], genero: 'feminino'}
+    {nome: 'Caio Costa', usuario: 'caioken__', email: 'caio.08costa@gmail.com', tel: 1135121234, cel: 11996083908, senha: '12345', foto: 'perfil.jpeg', seguidores: 100, livrosFavoritos: ['tL6aDAEACAAJ', '7BWrEAAAQBAJ', 'WJzcDgAAQBAJ'], genero: 'masculino', dataNasc: '13/11/2002', cpf: 34568734590},
+    {nome: 'João Santos', usuario: 'joaozinho', email: 'jsantos@gmail.com', tel: 1154855648, cel: 1191236908, senha: '54321', foto: 'perfil2.jpg', seguidores: 150, livrosFavoritos: ['WJzcDgAAQBAJ'], genero: 'masculino', dataNasc: '27/06/1998', cpf: 47282012390},
+    {nome: 'Maria Costa', usuario: 'ma.costa123', email: 'ma.costa123@gmail.com', tel: 1154871254, cel: 11964783908, senha: '00000', foto: 'perfil3.jpg', seguidores: 50, livrosFavoritos: ['tL6aDAEACAAJ'], genero: 'feminino', dataNasc: '18/03/1986', cpf: 76893895643}
   ];
   feedbacks = [
     {id: 1 , data: '11/04/2023 13:46', descricao: 'Gostei do livro', livroId: 'tL6aDAEACAAJ', userId: 'caioken__', curtidas: 3, naoGostei: 5, estrelas: [true, true, true, true, false]},

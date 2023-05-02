@@ -22,6 +22,8 @@ export class LivroDetalheComponent implements OnInit {
   limiteCaracter: any = 350;
   limitado: any = true
 
+  fill: string = ''
+
 
   constructor(private route: ActivatedRoute,
               private router: Router , private consultaApi: ConsultaApiService,

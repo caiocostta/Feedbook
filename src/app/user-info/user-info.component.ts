@@ -20,6 +20,7 @@ export class UserInfoComponent implements OnInit {
 
   isActive: string = 'info'
   feedbacks: any;
+  livrosFavoritos: any;
   livroFeedback: any = [];
   indexLivro: number = 0
 
@@ -40,6 +41,17 @@ export class UserInfoComponent implements OnInit {
         this.botaoEditar = false
       }
     })
+   }
+
+   getFavoritos(){
+    this.isActive = 'fav'
+    this.livrosFavoritos = []
+    for(let livroF of this.user.livrosFavoritos){
+      this.consultaApi.calloutServiceOnly(livroF).subscribe((livro) => {
+        this.livrosFavoritos.push(livro)
+        console.log(this.livrosFavoritos)
+      })
+    }
    }
 
    getFeedbacks(){
